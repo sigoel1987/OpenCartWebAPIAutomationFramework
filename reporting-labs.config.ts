@@ -12,7 +12,7 @@ const config: ReportingLabsOptions = {
 
   // ── Look ─────────────────────────────────────────────────────────────────────
   title: 'Open Cart – regression test suite',                       // shown in the header
-  // logo: 'logo.png',                               // your logo next to the title: a file next to this config (embedded), or an https URL
+  logo: 'logo.png',                               // your logo next to the title: a file next to this config (embedded), or an https URL
   // palette: 'lab',                                  // 'lab' (blue, default) | 'ocean' | 'ember' | 'mono'; viewers can switch
   // accent: '#7C3AED',                               // your brand color instead of the palette accent
   // theme: 'auto',                                   // 'auto' (follows OS, default) | 'light' | 'dark'
@@ -35,7 +35,7 @@ const config: ReportingLabsOptions = {
   // embedLimit: 2 * 1024 * 1024,                     // attachments bigger than this (bytes) are copied as files
   // embedVideos: false,                              // true = videos inside the HTML too (bigger file, no folder issues)
   // announce: true,                                  // print the report path after the run
-  open: 'always',                              // open the report in the browser: 'on-failure' | 'always' | 'never'; never in CI
+  open: 'never',                              // open the report in the browser: 'on-failure' | 'always' | 'never'; never in CI
   // warnMissingMeta: true,                           // after the run, list tests that have no meta() in the console
 
   // ── Test details ─────────────────────────────────────────────────────────────

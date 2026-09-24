@@ -1,3 +1,4 @@
+import { meta } from 'reporting-labs';
 import { test, expect } from '../src/fixtures/pagefixtures';
 
 test.beforeEach(async ({ loginPage }) => { //page is inbuilt fixture
@@ -8,6 +9,7 @@ test.beforeEach(async ({ loginPage }) => { //page is inbuilt fixture
 
 // verify product header
 test('verify product header', async ({ homePage, searchResultsPage, productInfoPage }) => {
+    meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_pp', story: 'US301', epic: 'ep201', feature: 'F20' });
     homePage.doSearch('macbook');
     searchResultsPage.selectProduct('MacBook Pro');
     expect(await productInfoPage.getProductHeader()).toBe('MacBook Pro');
@@ -16,6 +18,8 @@ test('verify product header', async ({ homePage, searchResultsPage, productInfoP
 // verify product images count
 
 test('verify product images count', async ({ homePage, searchResultsPage, productInfoPage }) => {
+    meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_pp', story: 'US302', epic: 'ep201', feature: 'F20' });
+
     homePage.doSearch('macbook');
     searchResultsPage.selectProduct('MacBook Pro');
     expect(await productInfoPage.getProductImagesCount()).toBe(4);
@@ -25,6 +29,8 @@ test('verify product images count', async ({ homePage, searchResultsPage, produc
 // expect productheader, productimagescount,brand,product code, Rewards Points, Availability
 
 test('verify product information/data', async ({ homePage, searchResultsPage, productInfoPage }) => {
+    meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_pp', story: 'US303', epic: 'ep201', feature: 'F20' });
+
     homePage.doSearch('macbook');
     searchResultsPage.selectProduct('MacBook Pro');
 
@@ -47,27 +53,32 @@ test('verify product information/data', async ({ homePage, searchResultsPage, pr
 })
 
 test('verify product is added to cart', async ({ homePage, searchResultsPage, productInfoPage }) => {
+    meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_pp', story: 'US304', epic: 'ep201', feature: 'F20' });
     await homePage.doSearch('macbook');
     await searchResultsPage.selectProduct('MacBook Pro');
     await productInfoPage.addProductToCart(2);
-    expect (productInfoPage.getcartAdditionSuccessMsg).toContain('Success: You have added');
+    expect(productInfoPage.getcartAdditionSuccessMsg).toContain('Success: You have added');
 })
 
 
 //common features test:
 test('App logo exists on Login Page', async ({ basePage }) => {
+    meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_pp', story: 'US305', epic: 'ep201', feature: 'F20' });
     expect(await basePage.isLogoVisible()).toBeTruthy();
 })
 
 test('Search Box exists on Login Page', async ({ basePage }) => {
+    meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_pp', story: 'US306', epic: 'ep201', feature: 'F20' });
     expect(await basePage.isSearchBoxVisible()).toBeTruthy();
 })
 
 test('Cart exists on Login Page', async ({ basePage }) => {
+    meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_pp', story: 'US307', epic: 'ep201', feature: 'F20' });
     expect(await basePage.isCartButtonVisible()).toBeTruthy();
 })
 
 test('Footers exists on Login Page', async ({ basePage }) => {
+    meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_pp', story: 'US308', epic: 'ep201', feature: 'F20' });
     expect(await basePage.getPageFooterscount()).toBe(16);
 });
 

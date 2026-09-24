@@ -8,8 +8,8 @@ export class HomePage extends BasePage {
 
     private readonly logoutLink: Locator;
     private readonly headers: Locator;
-    private readonly searchBox: Locator;
-    private readonly searchIcon: Locator;
+    // private readonly searchBox: Locator;
+    // private readonly searchIcon: Locator;
 
 
     //const... of the class...init the locators:
@@ -17,8 +17,8 @@ export class HomePage extends BasePage {
         super(page);
         this.logoutLink = page.getByRole('link', { name: 'Logout' });
         this.headers = page.getByRole('heading', { level: 2 });
-        this.searchBox = page.getByRole('textbox', { name: 'Search' });
-        this.searchIcon = page.locator('#search button');
+        // this.searchBox = page.getByRole('textbox', { name: 'Search' });//no need to define serach box as its coming from base page now
+        // this.searchIcon = page.locator('#search button');//no need to define serach box as its coming from base page now
     }
 
     // home page title

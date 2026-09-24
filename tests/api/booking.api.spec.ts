@@ -3,6 +3,7 @@
  * supply username and password and get the token
  */
 
+import { meta } from 'reporting-labs';
 import { test, expect } from '../../src/fixtures/apifixtures';
 
 let tokenID: string;
@@ -130,7 +131,7 @@ test('partial update booking with token', async ({ request }) => {
 
 // POST ---> bookingID ---> GET/bookingID ---> DELETE/bookingID (204) ---> GET bookingID (404)---> verify
 test('Delete booking using cookie Token test', async ({ apiHelper }) => {
-
+    meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US708', epic: 'ep201', feature: 'F20' });
 
     async function bookingToken(apiHelper: any) {
         let bookingAdminUser = {
@@ -182,25 +183,3 @@ test('Delete booking using cookie Token test', async ({ apiHelper }) => {
 
 
 
-/** Assignment: web automation + api automation
- * in same test, use page fixture for web along with request fixture
- * page.goto('');
- * go to booking page
- * write page locator and assertion--page.locator().isbookingid available or not??
- * 
- * contacts api
- * https://thinking-tester-contact-list.herokuapp.com/
- * web application credentials: shraddha.goel@pw.com | password123
- * 
- * 
- * create one contact using  add contact api POST api >> 
- * call this API 5 times --5 users will be created
- * come to the webpage -- contact should be created on web page >> 
- * verify if 5 contacts are coming on web
- * 
- * create a contact PUT
- * clicking on contact >> PUT API
- * call Delete API DELETE >> 
- * come back to contact list through web >> 
- * nothing should get return on web, entry should be deleted from web
- */

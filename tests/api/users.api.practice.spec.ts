@@ -1,10 +1,13 @@
 import { test, expect, APIResponse } from "@playwright/test";
+import { meta } from "reporting-labs";
 
 let AUTH_TOKEN = {
     Authorization: 'Bearer 2c663241fc0b8d180238e42b83a3f63292b382deff70fc9c7b0991583a188f92'
 };
 
 test('get all users GET api test', async ({ request }) => {
+    meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha', story: 'US102', epic: 'ep201', feature: 'F20' });
+
     let response: APIResponse = await request.get('https://gorest.co.in/public/v2/users', {
         headers: AUTH_TOKEN
     });
@@ -19,6 +22,8 @@ test('get all users GET api test', async ({ request }) => {
 })
 
 test('create a user POST api test', async ({ request }) => {
+    meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha', story: 'US102', epic: 'ep201', feature: 'F20' });
+
     //user javascript object: this object should get converted into JSON
     let userData = {
         "name": "PW API Automation Sigoel",
@@ -45,6 +50,8 @@ test('create a user POST api test', async ({ request }) => {
 
 
 test('update a user PUT api test', async ({ request }) => {
+    meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha', story: 'US102', epic: 'ep201', feature: 'F20' });
+
     // supply user data
     let userData = {
         "name": "PW API Automation sigoel",
@@ -63,6 +70,7 @@ test('update a user PUT api test', async ({ request }) => {
 })
 
 test('delete a user DELETE api test', async ({ request }) => {
+    meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US723', epic: 'ep201', feature: 'F20' });
     let response = await request.delete('https://gorest.co.in/public/v2/users/8619041', {
         headers: AUTH_TOKEN,
     });

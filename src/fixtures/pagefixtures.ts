@@ -20,7 +20,7 @@ type pageFixtures = {
     registrationPage: RegistrationPage,
     searchResultsPage: SearchResultsPage,
     productInfoPage: ProductInfoPage,
-    shoppingCartPage: ShoppingCartPage
+    shoppingCartPage: ShoppingCartPage,
 };
 
 //extend the playwright test: using baseTest.extend: Inheritance
@@ -62,7 +62,7 @@ export let test = baseTest.extend<pageFixtures>({
     shoppingCartPage: async ({ page }, use) => {
         let shoppingCartPage = new ShoppingCartPage(page);
         await use(shoppingCartPage);
-    }
+    },
 });
 
 export { expect } from '@playwright/test'

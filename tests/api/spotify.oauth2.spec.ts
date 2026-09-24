@@ -15,6 +15,7 @@
 
 
 import { test, expect } from "@playwright/test";
+import { meta } from "reporting-labs";
 
 let OAUTH_CONFIG = {
     tokenURL: 'https://accounts.spotify.com/api/token',//can be kept in env file anad call-process.env.url
@@ -44,6 +45,7 @@ test.beforeEach('POST -- generate the access token', async ({ request }) => {
 
 
 test('get albums data test', async ({ request }) => {
+    meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US714', epic: 'ep201', feature: 'F20' });
     // https://api.spotify.com/v1/albums/4aawyAB9vmqN3uQ7FjRGTy
     // let baseURL = 'https://api.spotify.com';
     let endpointURL = '/v1/albums/4aawyAB9vmqN3uQ7FjRGTy';
@@ -67,6 +69,7 @@ test('get albums data test', async ({ request }) => {
 })
 
 test('get artist data test', async ({ request }) => {
+    meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US715', epic: 'ep201', feature: 'F20' });
     // https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg
     let endpointURL = '/v1/artists/0TnOYISbd1XYRBk9myaseg';
 
@@ -86,6 +89,7 @@ test('get artist data test', async ({ request }) => {
 
 
 test('get track data test', async ({ request }) => {
+    meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US716', epic: 'ep201', feature: 'F20' });
     // https://api.spotify.com/v1/tracks/2iblMMIgSznA464mNov7A8
     let endpointURL = '/v1/tracks/2iblMMIgSznA464mNov7A8';
 
@@ -94,7 +98,7 @@ test('get track data test', async ({ request }) => {
             Authorization: `Bearer ${accessToken}`
         }
     });
-    expect (trackResponse.status()).toBe(200);
+    expect(trackResponse.status()).toBe(200);
     let trackJsonBody = await trackResponse.json();
     // fetch total tracks in the album
     let totalTracks = trackJsonBody.album.total_tracks

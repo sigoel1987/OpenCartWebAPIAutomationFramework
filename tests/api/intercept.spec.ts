@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { error } from 'node:console';
 import { json } from 'node:stream/consumers';
+import { meta } from 'reporting-labs';
 
 // what different network calls are happening in the background
 // web app ---> intercept the network calls and log them
@@ -11,7 +12,7 @@ import { json } from 'node:stream/consumers';
 //how many requests were called and which method they are using
 //usecase: need to check if api is working correctly or not
 test('intercept and log requests', async ({ page }) => {
-
+    meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US709', epic: 'ep201', feature: 'F20' });
     await page.route('**/*', async (route) => {
         console.log(route.request().method(), route.request().url()); //whatever requests are happening in the background-give me their methods-GET/POST/PUT...and url
         await route.continue(); //please continue with all the urls--url1 --- capture, url2 --- capture...
@@ -28,7 +29,7 @@ test('intercept and log requests', async ({ page }) => {
 
 //for which api we want to produce fake data
 test('mock search with fake json', async ({ page }) => {
-
+    meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US710', epic: 'ep201', feature: 'F20' });
     let fakeProducts = [
         { name: 'Fake Macbook Pro', price: '$599' },
         { name: 'Fake Iphone 18', price: '$5999' },
@@ -58,7 +59,7 @@ test('mock search with fake json', async ({ page }) => {
 })
 
 test('mock search page with fake HTML', async ({ page }) => {
-
+    meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US711', epic: 'ep201', feature: 'F20' });
     //https://naveenautomationlabs.com/opencart/index.php?route=product/search&search=macbook
     await page.route('**/index.php?route=product/search&search=macbook', async (route) => {
         await route.fulfill({           //used for generating fake data
@@ -104,6 +105,7 @@ test('mock search page with fake HTML', async ({ page }) => {
  */
 
 test('mock error with 400 response code with fake JSON', async ({ page }) => {
+    meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US712', epic: 'ep201', feature: 'F20' });
     // https://naveenautomationlabs.com/opencart/index.php?route=account/login
 
     // route.fulfill()       → MOCKS the response
@@ -129,7 +131,7 @@ test('mock error with 400 response code with fake JSON', async ({ page }) => {
 })
 
 test('mock error with 500 response code with fake HTML', async ({ page }) => {
-
+    meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US713', epic: 'ep201', feature: 'F20' });
     await page.route('****/index.php?route=account/login', async (route) => {
         await route.fulfill({           //used for generating fake data
             status: 500,                //fake response should be 500

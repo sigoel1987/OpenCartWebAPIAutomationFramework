@@ -1,3 +1,4 @@
+import { meta } from "reporting-labs";
 import { ApiHelper } from "../../src/api/ApiHelper";
 import { test, expect } from "../../src/fixtures/apifixtures";
 
@@ -26,6 +27,7 @@ async function createUser(apiHelper: any) {
 // POST ----- return userID ----> GET/userID ----> verify
 
 test('create a user test + verify : AAA', async ({ apiHelper }) => {
+    meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US717', epic: 'ep201', feature: 'F20' });
     // create a fresh user
     let userResponse = await createUser(apiHelper);
     // get a user:
@@ -38,6 +40,7 @@ test('create a user test + verify : AAA', async ({ apiHelper }) => {
 // Test2: Update a user test + verify: AAA
 // POST ---> userID ---> GET/userID ---> PUT/userID ---> GET userID ---> verify
 test('Update a user test', async ({ apiHelper }) => {
+    meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US718', epic: 'ep201', feature: 'F20' });
     // 1. create a user:
     let userResponse = await createUser(apiHelper);
     // 2. get a user:
@@ -64,6 +67,7 @@ test('Update a user test', async ({ apiHelper }) => {
 // Test3: Delete a user test + verify: AAA
 // POST ---> userID ---> GET/userID ---> DELETE/userID (204) ---> GET userID (404)---> verify
 test('Delete a user using Basic Token test', async ({ apiHelper }) => {
+    meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US719', epic: 'ep201', feature: 'F20' });
     // 1. create a user:
     let userResponse = await createUser(apiHelper);
 
@@ -85,6 +89,7 @@ test('Delete a user using Basic Token test', async ({ apiHelper }) => {
 // Test4: PATCH a user test + verify: AAA
 // POST ---> userID ---> GET/userID ---> PATCH/userID ---> GET userID ---> verify
 test('Update a user partially test', async ({ apiHelper }) => {
+    meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US720', epic: 'ep201', feature: 'F20' });
     // 1. create a user:
     let userResponse = await createUser(apiHelper);
     // 2. get a user:

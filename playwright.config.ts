@@ -31,20 +31,21 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
     ['list'],
-    ['html',{outputFolder:"reports/html-report",open:"always"}],
-    // ["allure-playwright", {
-    //   outputFolder: "allure-results",
-    //   suiteTitle: true,
-    // }],
-    // ['reporting-labs', reportingLabs]
+    ['html', { outputFolder: "reports/html-report", open: "always" }],
+    ["allure-playwright", {
+      outputFolder: "allure-results",
+      suiteTitle: true,
+      open: "never",
+    }],
+    ['reporting-labs', reportingLabs]
   ],
 
   use: {
     baseURL: process.env.BASE_URL,
     headless: false,
     trace: 'on-first-retry',
-    screenshot:'off',
-    video:'off'
+    screenshot: 'on',
+    video: 'on'
   },
 
   /* Configure projects for major browsers */

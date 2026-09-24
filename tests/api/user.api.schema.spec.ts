@@ -13,6 +13,7 @@
 import { test, expect } from "../../src/fixtures/apifixtures";
 import Ajv from 'ajv';
 import fs from 'fs';
+import { meta } from "reporting-labs";
 
 /**
  * STEPS:
@@ -72,10 +73,11 @@ let ajv = new Ajv();
 let userArraySchema = {
     "type": "array",
     // "items": userSchema
-    "items":JSON.parse(fs.readFileSync('./src/schema/userschema.json','utf-8'))
+    "items": JSON.parse(fs.readFileSync('./src/schema/userschema.json', 'utf-8'))
 }
 
 test('get a user - schema test', async ({ apiHelper }) => {
+    meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US721', epic: 'ep201', feature: 'F20' });
     // first create a fresh user and then GET the user to get the JSON
     let userData = {
         name: "apiautomationsigoel",
@@ -95,7 +97,7 @@ test('get a user - schema test', async ({ apiHelper }) => {
     //now do schema validation: validate the response schema now
     // readFileSync is reading JSON file and JSON.parse method is reading the file and converting it into JSON
     // let validateSchema = ajv.compile(userSchema);
-    let validateSchema = ajv.compile(JSON.parse(fs.readFileSync('./src/schema/userschema.json','utf-8')))
+    let validateSchema = ajv.compile(JSON.parse(fs.readFileSync('./src/schema/userschema.json', 'utf-8')))
     let isSchemaValid = validateSchema(getUserResponse.body);
     if (!isSchemaValid) {
         console.log("SCHEMA ERROR: ", validateSchema.errors);
@@ -112,6 +114,7 @@ test('get a user - schema test', async ({ apiHelper }) => {
  */
 
 test('get all users - schema test', async ({ apiHelper }) => {
+    meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US722', epic: 'ep201', feature: 'F20' });
     //here no need to create user just get the users
     //GET all users:
     let getUsersResponse = await apiHelper.get(`/public/v2/users`, AUTH_HEADER);

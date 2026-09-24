@@ -22,6 +22,7 @@
  * nothing should get return on web, entry should be deleted from web
  */
 
+import { meta } from "reporting-labs";
 import { test, expect } from "../../src/fixtures/apifixtures";
 
 // login: https://thinking-tester-contact-list.herokuapp.com/users/login
@@ -60,7 +61,7 @@ test.beforeEach('generate the token', async ({ request }) => {
 });
 
 test('Contact APP E2E flow - create, verify, delete, validateList', async ({ request, page }) => {
-
+    meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US701', epic: 'ep201', feature: 'F20' });
 
     // STEP2: create contact POST (using token and body) >>
     let createApiResponse = await request.post(`${baseURL}/contacts`, {

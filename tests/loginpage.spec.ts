@@ -2,18 +2,22 @@
 import { test, expect } from '@playwright/test';
 import { LoginPage } from "../src/pages/LoginPage";
 import { HomePage } from "../src/pages/HomePage";
+import { BasePage } from '../src/pages/BasePage';
 
 let loginPage: LoginPage; //creating object of LoginPage class
 let homePage: HomePage;
+let basePage: BasePage;
 
 test.beforeEach(async ({ page }) => { //page is inbuilt fixture
     loginPage = new LoginPage(page);
     await loginPage.goToLoginPage();
     homePage = new HomePage(page);
+    basePage = new BasePage(page);
 })
 
 test.skip('login page title test', async () => {
-    let pageTitle = await loginPage.getLoginPageTitle();
+    // let pageTitle = await loginPage.getLoginPageTitle(); //common method title moved to basepage
+    let pageTitle = await basePage.getPageTitle();
     console.log('Login page title: ', pageTitle);
     expect(pageTitle).toBe('Account Login');//actual data should not be hardcoded
     //expected data can be hardcoded; it is fine to maintain expected data directly in test
