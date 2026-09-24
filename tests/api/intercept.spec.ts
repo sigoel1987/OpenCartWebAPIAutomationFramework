@@ -46,7 +46,7 @@ test('mock search with fake json', async ({ page }) => {
 
     await page.goto('https://abc.com/index.php?route=product/search&search=macbook');
 
-    await page.pause();
+    // await page.pause();
 
     /**
      * usecase - real api is not available this time, so we create mock data to be displayed on web app
@@ -95,7 +95,7 @@ test('mock search page with fake HTML', async ({ page }) => {
     const prices = await page.locator('.price').allTextContents();
     expect(prices).toEqual(["$599", "$999"]);
 
-    await page.pause();
+    // await page.pause();
 })
 
 /**
@@ -127,7 +127,7 @@ test('mock error with 400 response code with fake JSON', async ({ page }) => {
     expect(response?.status()).toBe(400);
     expect(body.error).toBe('Not Authorized')
 
-    await page.pause();
+    // await page.pause();
 })
 
 test('mock error with 500 response code with fake HTML', async ({ page }) => {
@@ -157,5 +157,5 @@ test('mock error with 500 response code with fake HTML', async ({ page }) => {
     expect(heading).toBe('Internal Server Error');
     const errorMsg = await page.locator('p').textContent();
     expect(errorMsg).toBe("Something went wrong on the server.");
-    await page.pause();
+    // await page.pause();
 })

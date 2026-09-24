@@ -76,7 +76,7 @@ let userArraySchema = {
     "items": JSON.parse(fs.readFileSync('./src/schema/userschema.json', 'utf-8'))
 }
 
-test('get a user - schema test', async ({ apiHelper }) => {
+test('get a user - schema test', async ({ userApiHelper }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US721', epic: 'ep201', feature: 'F20' });
     // first create a fresh user and then GET the user to get the JSON
     let userData = {
@@ -85,13 +85,13 @@ test('get a user - schema test', async ({ apiHelper }) => {
         gender: "female",
         status: "active"
     }
-    let response = await apiHelper.post('/public/v2/users', userData, AUTH_HEADER);
+    let response = await userApiHelper.post('/public/v2/users', userData, AUTH_HEADER);
     expect(response.status).toBe(201);
     let userId = response.body.id;
     console.log('created user id: ', userId);
 
     // get a user:
-    let getUserResponse = await apiHelper.get(`/public/v2/users/${userId}`, AUTH_HEADER);
+    let getUserResponse = await userApiHelper.get(`/public/v2/users/${userId}`, AUTH_HEADER);
     expect(getUserResponse.status).toBe(200);
 
     //now do schema validation: validate the response schema now
@@ -113,11 +113,11 @@ test('get a user - schema test', async ({ apiHelper }) => {
  * 
  */
 
-test('get all users - schema test', async ({ apiHelper }) => {
+test('get all users - schema test', async ({ userApiHelper }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US722', epic: 'ep201', feature: 'F20' });
     //here no need to create user just get the users
     //GET all users:
-    let getUsersResponse = await apiHelper.get(`/public/v2/users`, AUTH_HEADER);
+    let getUsersResponse = await userApiHelper.get(`/public/v2/users`, AUTH_HEADER);
     expect(getUsersResponse.status).toBe(200);
 
     //now do array schema validation: validate the response of array schema now

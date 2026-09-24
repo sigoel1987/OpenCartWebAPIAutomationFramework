@@ -21,7 +21,7 @@
     validate booking exist - get booking /booking id					
  */
 
-import { meta } from "reporting-labs";
+import { meta,log } from "reporting-labs";
 import { test, expect } from "../../src/fixtures/apifixtures"
 
 let bookingId: number;
@@ -54,7 +54,7 @@ test.describe.serial('Booking e2e tests', () => {
         }
         let response = await apiHelper.post('/booking', bookingData);
         bookingId = response.body.bookingid;
-        console.log(`Created booking ID: ${bookingId}`);
+        await log(`Created booking ID: ${bookingId}`);
         expect(response.status).toBe(200);
     })
 
@@ -93,7 +93,7 @@ test.describe.serial('Booking e2e tests', () => {
     test('GET API - booking id vaidation after deletion test', async ({ apiHelper }) => {
         meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US707', epic: 'ep201', feature: 'F20' });
         let response = await apiHelper.get(`/booking/${bookingId}`)
-        console.log('Booking Id not found');
+        await log('Booking Id not found'); //using log creating log entry in the report//console.log will print on console
         expect(response.status).toBe(404);
         expect(response.body).toEqual('Not Found');
 

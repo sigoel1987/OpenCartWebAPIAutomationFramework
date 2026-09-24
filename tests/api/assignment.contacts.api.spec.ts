@@ -22,7 +22,7 @@
  * nothing should get return on web, entry should be deleted from web
  */
 
-import { meta } from "reporting-labs";
+import { meta, log } from "reporting-labs";
 import { test, expect } from "../../src/fixtures/apifixtures";
 
 // login: https://thinking-tester-contact-list.herokuapp.com/users/login
@@ -58,10 +58,12 @@ test.beforeEach('generate the token', async ({ request }) => {
     let jsonResponse = await userResponse.json();
     tokenID = jsonResponse.token;
     console.log(`Contact User app admin user token: ${tokenID}`);
+    await log(`Contact User app admin user token: ${tokenID}`);
+
 });
 
 test('Contact APP E2E flow - create, verify, delete, validateList', async ({ request, page }) => {
-    meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US701', epic: 'ep201', feature: 'F20' });
+    meta({ priority: 'P1', severity: 'major', owner: 'Shraddha_api', story: 'US701', epic: 'ep201', feature: 'F20' });
 
     // STEP2: create contact POST (using token and body) >>
     let createApiResponse = await request.post(`${baseURL}/contacts`, {
@@ -72,7 +74,9 @@ test('Contact APP E2E flow - create, verify, delete, validateList', async ({ req
     let newContactJson = await createApiResponse.json();
     let contactID = newContactJson._id
     console.log(`New Contact Created: ${contactID}`);
+    await log (`New Contact Created: ${contactID}`);
 
+    log(`New Contact Created: ${contactID}`);
     // STEP3: validate contacts count on UI (login to app and check contacts count)
     await page.goto(baseURL);
     await page.getByRole('textbox', { name: 'Email' }).fill(creds.email);
@@ -92,7 +96,7 @@ test('Contact APP E2E flow - create, verify, delete, validateList', async ({ req
 
     let totalContactsBeforeDelete = await getContactRecordCount();
     console.log(`Total Contacts in the list before delete are: ${totalContactsBeforeDelete}`);
-
+    await log (`Total Contacts in the list before delete are: ${totalContactsBeforeDelete}`);
     // STEP4: Delete Contact using DELETE
     // through Web: go to contact list >> assert on list count (should be less than 1 from the previous count)
     let deleteContactResponse = await request.delete(`${baseURL}/contacts/${contactID}`, {
@@ -105,4 +109,5 @@ test('Contact APP E2E flow - create, verify, delete, validateList', async ({ req
     const totalContactsafterDelete = await getContactRecordCount();
     expect(totalContactsafterDelete).toBe(totalContactsBeforeDelete - 1);
     console.log(`Total Contacts in the list after delete are: ${totalContactsafterDelete}`);
+    await log (`Total Contacts in the list after delete are: ${totalContactsafterDelete}`);
 })

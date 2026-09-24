@@ -19,16 +19,16 @@ let userId: number;
 test.describe.serial('running e2e go rest crud apis tests', () => {
 
     // GET test:
-    test('GET API - get all users', async ({ apiHelper }) => {
+    test('GET API - get all users', async ({ userApiHelper }) => {
         meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US724', epic: 'ep201', feature: 'F20' });
-        let response = await apiHelper.get('/public/v2/users', AUTH_HEADER);
+        let response = await userApiHelper.get('/public/v2/users', AUTH_HEADER);
 
         expect(response.status).toBe(200);
         expect(response.body.length).toBeGreaterThan(1);
     });
 
     // POST test:
-    test('POST API - create a fresh user', async ({ apiHelper }) => {
+    test('POST API - create a fresh user', async ({ userApiHelper }) => {
         meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US725', epic: 'ep201', feature: 'F20' });
         let userData = {
             "name": "PW API Automation Sigoel",
@@ -37,7 +37,7 @@ test.describe.serial('running e2e go rest crud apis tests', () => {
             "status": "active"
         }
 
-        let response = await apiHelper.post('/public/v2/users', userData, AUTH_HEADER);
+        let response = await userApiHelper.post('/public/v2/users', userData, AUTH_HEADER);
 
         expect(response.status).toBe(201);
         userId = response.body.id;
@@ -45,14 +45,14 @@ test.describe.serial('running e2e go rest crud apis tests', () => {
     });
 
     // PUT test:
-    test('PUT API - update a user', async ({ apiHelper }) => {
+    test('PUT API - update a user', async ({ userApiHelper }) => {
         meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US726', epic: 'ep201', feature: 'F20' });
         let userData = {
             "name": "PW API Automation Sigoel test",
             "status": "inactive"
         }
 
-        let response = await apiHelper.put(`/public/v2/users/${userId}`, userData, AUTH_HEADER);
+        let response = await userApiHelper.put(`/public/v2/users/${userId}`, userData, AUTH_HEADER);
 
         expect(response.status).toBe(200);
         // expect(response.status)
@@ -61,17 +61,17 @@ test.describe.serial('running e2e go rest crud apis tests', () => {
     });
 
     // DELETE test:
-    test('DELETE API - Delete a user', async ({ apiHelper }) => {
+    test('DELETE API - Delete a user', async ({ userApiHelper }) => {
         meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US727', epic: 'ep201', feature: 'F20' });
-        let response = await apiHelper.delete(`/public/v2/users/${userId}`, AUTH_HEADER);
+        let response = await userApiHelper.delete(`/public/v2/users/${userId}`, AUTH_HEADER);
         expect(response.status).toBe(204);
     });
 
     //final GET the user to validate if user exist or not:
 
-    test('GET API - fetch the user', async ({ apiHelper }) => {
+    test('GET API - fetch the user', async ({ userApiHelper }) => {
         meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US728', epic: 'ep201', feature: 'F20' });
-        let response = await apiHelper.get(`/public/v2/users/${userId}`, AUTH_HEADER);
+        let response = await userApiHelper.get(`/public/v2/users/${userId}`, AUTH_HEADER);
         expect(response.status).toBe(404);
         expect(response.body.message).toEqual('Not Found');
     })

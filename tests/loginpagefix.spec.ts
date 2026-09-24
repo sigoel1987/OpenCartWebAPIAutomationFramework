@@ -87,7 +87,7 @@ let testCSVData = CsvHelper.readCsv('src/testdata/logindata.csv');
 for (let row of testCSVData) {
     test(`login to app with invalid credentials with CSV data - ${row.username} - ${row.password}`, async ({ loginPage }) => {
         meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_lp', story: 'US207', epic: 'ep201', feature: 'F201', issue: 'bug201' });
-        await testData(testCSVData, 'invalid Login Data');
+        await testData(testCSVData, 'invalid Login Data');//testData() is used to see test data in report
 
         await loginPage.doLogin(row.username, row.password);
         expect(await loginPage.isInvalidLoginErrorDisplayed()).toBeTruthy();
@@ -107,7 +107,8 @@ let testExcelData = ExcelHelper.readExcel('src/testdata/opencarttestdata.xlsx', 
 for (let row of testExcelData) {
     test(`login to app with invalid credentials with Excel Data - ${row.username} - ${row.password}`, async ({ loginPage }) => {
         meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_lp', story: 'US208', epic: 'ep201', feature: 'F201', issue: 'bug201' });
-        await testData(testExcelData, 'Invalid Login Data');
+        await testData(testExcelData, 'Invalid Login Data');//testData() is used to see test data in report
+
         await loginPage.doLogin(row.username, row.password);
         expect(await loginPage.isInvalidLoginErrorDisplayed()).toBeTruthy();
     })
@@ -124,7 +125,7 @@ let testJSONData = JsonHelper.readJson('src/testdata/logindata.json');
 for (let row of testJSONData) {
     test(`login to app with invalid credentials with JSON Data - ${row.username} - ${row.password}`, async ({ loginPage }) => {
         meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_lp', story: 'US209', epic: 'ep201', feature: 'F201', issue: 'bug201' });
-        await testData(testJSONData, 'Invalid Login Data');
+        await testData(testJSONData, 'Invalid Login Data');//testData() is used to see test data in report
 
         await loginPage.doLogin(row.username, row.password);
         expect(await loginPage.isInvalidLoginErrorDisplayed()).toBeTruthy();

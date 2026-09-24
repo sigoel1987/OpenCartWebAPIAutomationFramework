@@ -26,12 +26,12 @@ async function createUser(apiHelper: any) {
 // test1: Create a user test + verify : AAA
 // POST ----- return userID ----> GET/userID ----> verify
 
-test('create a user test + verify : AAA', async ({ apiHelper }) => {
+test('create a user test + verify : AAA', async ({ userApiHelper }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US717', epic: 'ep201', feature: 'F20' });
     // create a fresh user
-    let userResponse = await createUser(apiHelper);
+    let userResponse = await createUser(userApiHelper);
     // get a user:
-    let getResponse = await apiHelper.get(`/public/v2/users/${userResponse.id}`, AUTH_HEADER);
+    let getResponse = await userApiHelper.get(`/public/v2/users/${userResponse.id}`, AUTH_HEADER);
     expect(getResponse.status).toBe(200);
     expect(getResponse.body.name).toBe('apiautomationsigoel')
 })
@@ -39,12 +39,12 @@ test('create a user test + verify : AAA', async ({ apiHelper }) => {
 
 // Test2: Update a user test + verify: AAA
 // POST ---> userID ---> GET/userID ---> PUT/userID ---> GET userID ---> verify
-test('Update a user test', async ({ apiHelper }) => {
+test('Update a user test', async ({ userApiHelper }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US718', epic: 'ep201', feature: 'F20' });
     // 1. create a user:
-    let userResponse = await createUser(apiHelper);
+    let userResponse = await createUser(userApiHelper);
     // 2. get a user:
-    let getResponse = await apiHelper.get(`/public/v2/users/${userResponse.id}`, AUTH_HEADER);
+    let getResponse = await userApiHelper.get(`/public/v2/users/${userResponse.id}`, AUTH_HEADER);
     expect(getResponse.status).toBe(200);
     expect(getResponse.body.email).toBe(userResponse.email);
     // 3. update a user: needs data object also
@@ -52,13 +52,13 @@ test('Update a user test', async ({ apiHelper }) => {
         name: "apiautomationsigoel-updated",
         status: "inactive"
     }
-    let updateResponse = await apiHelper.put(`/public/v2/users/${getResponse.body.id}`, userUpdatedData, AUTH_HEADER);
+    let updateResponse = await userApiHelper.put(`/public/v2/users/${getResponse.body.id}`, userUpdatedData, AUTH_HEADER);
     expect(updateResponse.status).toBe(200);
     expect(updateResponse.body.name).toBe(userUpdatedData.name);
     expect(updateResponse.body.status).toBe(userUpdatedData.status);
 
     // 4. get a user:
-    getResponse = await apiHelper.get(`/public/v2/users/${userResponse.id}`, AUTH_HEADER);
+    getResponse = await userApiHelper.get(`/public/v2/users/${userResponse.id}`, AUTH_HEADER);
     expect(getResponse.status).toBe(200);
     expect(getResponse.body.name).toBe(userUpdatedData.name);
     expect(updateResponse.body.status).toBe(userUpdatedData.status);
@@ -66,34 +66,34 @@ test('Update a user test', async ({ apiHelper }) => {
 
 // Test3: Delete a user test + verify: AAA
 // POST ---> userID ---> GET/userID ---> DELETE/userID (204) ---> GET userID (404)---> verify
-test('Delete a user using Basic Token test', async ({ apiHelper }) => {
+test('Delete a user using Basic Token test', async ({ userApiHelper }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US719', epic: 'ep201', feature: 'F20' });
     // 1. create a user:
-    let userResponse = await createUser(apiHelper);
+    let userResponse = await createUser(userApiHelper);
 
     // 2. get a user:
-    let getResponse = await apiHelper.get(`/public/v2/users/${userResponse.id}`, AUTH_HEADER);
+    let getResponse = await userApiHelper.get(`/public/v2/users/${userResponse.id}`, AUTH_HEADER);
     expect(getResponse.status).toBe(200);
     expect(getResponse.body.email).toBe(userResponse.email);
 
     // 3. Delete a user
-    let updateResponse = await apiHelper.delete(`/public/v2/users/${getResponse.body.id}`, AUTH_HEADER);
+    let updateResponse = await userApiHelper.delete(`/public/v2/users/${getResponse.body.id}`, AUTH_HEADER);
     expect(updateResponse.status).toBe(204);
 
     // 4. get a user:
-    getResponse = await apiHelper.get(`/public/v2/users/${userResponse.id}`, AUTH_HEADER);
+    getResponse = await userApiHelper.get(`/public/v2/users/${userResponse.id}`, AUTH_HEADER);
     expect(getResponse.status).toBe(404);
     expect(getResponse.body.message).toBe('Resource not found');
 })
 
 // Test4: PATCH a user test + verify: AAA
 // POST ---> userID ---> GET/userID ---> PATCH/userID ---> GET userID ---> verify
-test('Update a user partially test', async ({ apiHelper }) => {
+test('Update a user partially test', async ({ userApiHelper }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US720', epic: 'ep201', feature: 'F20' });
     // 1. create a user:
-    let userResponse = await createUser(apiHelper);
+    let userResponse = await createUser(userApiHelper);
     // 2. get a user:
-    let getResponse = await apiHelper.get(`/public/v2/users/${userResponse.id}`, AUTH_HEADER);
+    let getResponse = await userApiHelper.get(`/public/v2/users/${userResponse.id}`, AUTH_HEADER);
     expect(getResponse.status).toBe(200);
     expect(getResponse.body.email).toBe(userResponse.email);
     // 3. update a user: needs data object also
@@ -101,13 +101,13 @@ test('Update a user partially test', async ({ apiHelper }) => {
         name: "apiautomationsigoel-updated",
         status: "inactive"
     }
-    let updateResponse = await apiHelper.put(`/public/v2/users/${getResponse.body.id}`, userUpdatedData, AUTH_HEADER);
+    let updateResponse = await userApiHelper.put(`/public/v2/users/${getResponse.body.id}`, userUpdatedData, AUTH_HEADER);
     expect(updateResponse.status).toBe(200);
     expect(updateResponse.body.name).toBe(userUpdatedData.name);
     expect(updateResponse.body.status).toBe(userUpdatedData.status);
 
     // 4. get a user:
-    getResponse = await apiHelper.get(`/public/v2/users/${userResponse.id}`, AUTH_HEADER);
+    getResponse = await userApiHelper.get(`/public/v2/users/${userResponse.id}`, AUTH_HEADER);
     expect(getResponse.status).toBe(200);
     expect(getResponse.body.name).toBe(userUpdatedData.name);
     expect(updateResponse.body.status).toBe(userUpdatedData.status);
