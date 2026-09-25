@@ -20,7 +20,7 @@ for (let row of registeraccountdata) {
     test(`Register account test - ${row.firstname} - ${row.lastname}`, async ({ registrationPage }) => {
         meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_rp', story: 'US402', epic: 'ep201', feature: 'F20' });
 
-        await registrationPage.fillRegistrationForm(row.firstname, row.lastname, row.email, row.mobile, row.pwd, row.confirmpwd);
+        await registrationPage.fillRegistrationForm(row.firstname, row.lastname, `sigoel_${Date.now()}@gmail.com`, row.mobile, row.pwd, row.confirmpwd);
         let successMessage = await registrationPage.captureRegistrationSuccess();
         expect(successMessage).toEqual('Your Account Has Been Created!')
     });

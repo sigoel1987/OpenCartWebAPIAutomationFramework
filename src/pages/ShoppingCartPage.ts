@@ -16,7 +16,7 @@ export class ShoppingCartPage extends BasePage {
 
         this.shoppingCartHeader = page.locator('#content h1');
         this.cartTable = page.locator('#content .table-responsive');
-        this.cartProduct = page.locator('.table-bordered td.text-left a');
+        this.cartProduct = page.locator('.table-bordered td.text-left a').first();
         this.productQuantity = page.locator('.table-bordered div.input-group input.form-control');
     }
 

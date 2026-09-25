@@ -20,7 +20,7 @@ export class BasePage {
         this.searchBox = page.getByRole('textbox', { name: 'Search' }).first();
         this.searchIcon = page.locator('div#search button');
         this.currency = page.locator('#form-currency');
-        this.cartButton = page.locator('div#cart button');
+        this.cartButton = page.locator('div#cart button').first();
         this.footerLinks = page.locator('footer a')
     }
 
