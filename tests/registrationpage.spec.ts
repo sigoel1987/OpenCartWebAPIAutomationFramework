@@ -7,10 +7,10 @@ test.beforeEach(async ({ loginPage }) => {
     await loginPage.goToRegistrationPage();
 })
 
-test('Registration Page title test', async ({ registrationPage }) => {
+test('Registration Page title test', async ({ basePage }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_rp', story: 'US401', epic: 'ep201', feature: 'F20' });
 
-    let registrationPageTitle = await registrationPage.getRegistrationPageTitle();
+    let registrationPageTitle = await basePage.getPageTitle();
     expect(registrationPageTitle).toBe('Register Account');
 })
 
@@ -35,6 +35,26 @@ test('Verify registration fails when email is already registered', async ({ regi
 })
 
 
+//common features test:
+test('App logo exists on registration Page', async ({ basePage }) => {
+    meta({ priority: 'P2', severity: 'major', owner: 'Shraddha_rp', story: 'US404', epic: 'ep201', feature: 'F201', issue: 'bug201' });
+    expect(await basePage.isLogoVisible()).toBeTruthy();
+})
+
+test('Search Box exists on registration Page', async ({ basePage }) => {
+    meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_rp', story: 'US405', epic: 'ep201', feature: 'F201', issue: 'bug201' });
+    expect(await basePage.isSearchBoxVisible()).toBeTruthy();
+})
+
+test('Cart exists on registration Page', async ({ basePage }) => {
+    meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_rp', story: 'US406', epic: 'ep201', feature: 'F201', issue: 'bug201' });
+    expect(await basePage.isCartButtonVisible()).toBeTruthy();
+})
+
+test('Footers exists on registration Page', async ({ basePage }) => {
+    meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_rp', story: 'US407', epic: 'ep201', feature: 'F201', issue: 'bug201' });
+    expect(await basePage.getPageFooterscount()).toBe(16);
+});
 
 
 
