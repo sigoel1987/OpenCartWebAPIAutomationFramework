@@ -62,7 +62,7 @@ test('verify product is added to cart', async ({ homePage, searchResultsPage, pr
 
 
 //common features test:
-test('App logo exists on Login Page', async ({ basePage }) => {
+test('App logo exists on product Page', async ({ basePage }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_pp', story: 'US305', epic: 'ep201', feature: 'F20' });
     expect(await basePage.isLogoVisible()).toBeTruthy();
 })

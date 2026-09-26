@@ -38,7 +38,11 @@ test('Verify registration fails when email is already registered', async ({ regi
 //common features test:
 test('App logo exists on registration Page', async ({ basePage }) => {
     meta({ priority: 'P2', severity: 'major', owner: 'Shraddha_rp', story: 'US404', epic: 'ep201', feature: 'F201', issue: 'bug201' });
-    expect(await basePage.isLogoVisible()).toBeTruthy();
+    console.log('----running common methods.....');
+   let isVisble =  await basePage.isLogoVisible();
+   console.log(isVisble);
+   expect(isVisble).toBeTruthy();
+   // expect(await basePage.isLogoVisible()).toBeTruthy();
 })
 
 test('Search Box exists on registration Page', async ({ basePage }) => {
