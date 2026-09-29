@@ -35,7 +35,7 @@ test('Verify quantity of the added product is displayed correctly in the shoppin
     await productInfoPage.goToShoppingCartPage();
     expect.soft(await shoppingCartPage.isCartTableVisible()).toBeTruthy();
     expect.soft(await shoppingCartPage.getProductQuantity()).toBe("2");
-    await page.pause();
+    // await page.pause();
 })
 
 

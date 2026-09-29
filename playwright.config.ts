@@ -24,11 +24,13 @@ export default defineConfig({
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
-  /* Retry on CI only */
+  /* Retry on CI only ---by-default CI = true*/
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 2 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
+
+
   reporter: process.env.CI
     ? [
       ['list'],
@@ -36,7 +38,7 @@ export default defineConfig({
       ["allure-playwright", {
         outputFolder: "allure-results",
         suiteTitle: true,
-        open: "always",
+        // open: "always",
       }],
       ['reporting-labs', reportingLabs]
     ]
@@ -47,14 +49,14 @@ export default defineConfig({
       ["allure-playwright", {
         outputFolder: "allure-results",
         suiteTitle: true,
-        open: "always",
+        // open: "always",
       }],
       ['reporting-labs', reportingLabs]
     ],
 
   use: {
     baseURL: process.env.BASE_URL,
-    headless: !process.env.CI ? false : true, //if CI-true, headless =true; in local CI=false, headless=false
+    headless: !process.env.CI ? false : true, //bydefault CI=true; if CI-true, headless =true; in local CI=false, headless=false
     trace: 'on-first-retry',
     screenshot: 'on',
     video: 'on'
