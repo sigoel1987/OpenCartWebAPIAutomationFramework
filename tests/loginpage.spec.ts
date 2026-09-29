@@ -15,7 +15,7 @@ test.beforeEach(async ({ page }) => { //page is inbuilt fixture
     basePage = new BasePage(page);
 })
 
-test.skip('login page title test', async () => {
+test('login page title test', async () => {
     // let pageTitle = await loginPage.getLoginPageTitle(); //common method title moved to basepage
     let pageTitle = await basePage.getPageTitle();
     console.log('Login page title: ', pageTitle);
@@ -24,28 +24,28 @@ test.skip('login page title test', async () => {
 
 })
 
-test.skip('forgot pwd link exist test', async () => {
+test('forgot pwd link exist test', async () => {
     expect(await loginPage.isForgottenPwdLinkExist()).toBeTruthy();
 })
 
-test.skip('user is able to login to app', async () => {
+test('user is able to login to app', async () => {
     await loginPage.doLogin('pwapril@pw.com', 'pw123');
     // writing soft assertions here - if test fails on line 30 then it will continue
     expect.soft(await homePage.isLogoutLinkExist()).toBeTruthy();
     expect.soft(await homePage.getHomePageTitle()).toBe("My Account");
 })
 
-test.skip("new customer header exist test", async () => {
+test("new customer header exist test", async () => {
     expect(await loginPage.isNewCustomerHeaderExist()).toBeTruthy();
 })
 
-test.skip("returning customer header exist test", async () => {
+test("returning customer header exist test", async () => {
     expect(await loginPage.isReturningCustomerHeaderDisplayed()).toBeTruthy();
 })
 
 // Invalid email + valid password test
 
-test.skip("Invalid email + valid password test", async () => {
+test("Invalid email + valid password test", async () => {
     await loginPage.doLogin("pwapril123@pw.com", 'pw123');
     expect(await loginPage.isInvalidLoginErrorDisplayed()).toBeTruthy();
 })

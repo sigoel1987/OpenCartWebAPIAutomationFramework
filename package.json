@@ -13,7 +13,7 @@
     "allure:clean": "rm -rf allure-results allure-report"
   },
   "keywords": [],
-  "author": "",
+  "author": "Shraddha Goel",
   "license": "ISC",
   "type": "module",
   "devDependencies": {

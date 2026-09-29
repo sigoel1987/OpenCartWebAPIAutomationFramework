@@ -73,10 +73,6 @@ test.describe.serial('running e2e go rest crud apis tests', () => {
         meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US728', epic: 'ep201', feature: 'F20' });
         let response = await userApiHelper.get(`/public/v2/users/${userId}`, AUTH_HEADER);
         expect(response.status).toBe(404);
-        expect(response.body.message).toEqual('Not Found');
+        expect(response.body.message).toEqual('Resource not found');
     })
 })
-
-
-
-

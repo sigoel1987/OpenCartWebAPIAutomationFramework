@@ -12,6 +12,9 @@ export class ProductInfoPage extends BasePage {
     private readonly productPricing: Locator;
     private productInfoMap: Map<string, string | number>;
 
+    private readonly cartButton: Locator;
+    private readonly removeItemButton: Locator;
+
     private readonly quantity: Locator;
     private readonly addToCartBtn: Locator;
     private readonly addCartSuccessMsg: Locator;
@@ -28,6 +31,10 @@ export class ProductInfoPage extends BasePage {
         this.productMetaData = page.locator('div#content ul.list-unstyled:nth-of-type(1) li');
         this.productPricing = page.locator('div#content ul.list-unstyled:nth-of-type(2) li');
         this.productInfoMap = new Map<string, string | number>;
+
+        this.cartButton = page.locator('#cart-total')
+        this.removeItemButton = page.getByTitle('Remove');
+        // locator(".btn.btn-danger.btn-xs");
 
         this.quantity = page.getByRole('textbox', { name: 'Qty' });
         this.addToCartBtn = page.getByRole('button', { name: 'Add to Cart' });
@@ -99,8 +106,13 @@ export class ProductInfoPage extends BasePage {
         await this.addToCartBtn.click();
     }
 
+    async removeAllProductsFromCart(): Promise<void>{
+        await this.cartButton.click();
+        await this.removeItemButton.click();
+    }
+
     async getcartAdditionSuccessMsg(): Promise<string | null> {
-        let cartSuccessMsg = await this.addCartSuccessMsg.textContent();
+        const cartSuccessMsg = await this.addCartSuccessMsg.textContent();
         console.log(`cart success msg: ${cartSuccessMsg}`);
         return cartSuccessMsg;
     }

@@ -54,10 +54,12 @@ test('verify product information/data', async ({ homePage, searchResultsPage, pr
 
 test('verify product is added to cart', async ({ homePage, searchResultsPage, productInfoPage }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_pp', story: 'US304', epic: 'ep201', feature: 'F20' });
+    await productInfoPage.removeAllProductsFromCart();
     await homePage.doSearch('macbook');
     await searchResultsPage.selectProduct('MacBook Pro');
     await productInfoPage.addProductToCart(2);
-    expect(productInfoPage.getcartAdditionSuccessMsg).toContain('Success: You have added');
+    const successMessage = await productInfoPage.getcartAdditionSuccessMsg();
+    expect(successMessage).toContain('Success: You have added');
 })
 
 
