@@ -23,7 +23,8 @@ export class SearchResultsPage extends BasePage {
 
     async selectProduct(productName: string): Promise<void> {
         console.log(`product name: ${productName}`);
-        await this.page.getByRole('link', { name: productName, exact: true }).first().click(); //dynamic locator
+        await this.page.getByRole('link', { name: productName}).first().waitFor({state:"visible"});
+        await this.page.getByRole('link', { name: productName}).first().click(); //dynamic locator
         /** 
          * locators which depend on the parameter of the function, they will be written inside function
          * fixed locators will be written inside constructor because they don't depend on method parameter

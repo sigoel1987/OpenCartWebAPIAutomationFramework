@@ -40,8 +40,8 @@ export class ShoppingCartPage extends BasePage {
         return this.cartProduct.filter({ hasText: productName });
     }
 
-    async getProductQuantity(): Promise<string> {
-        let quantity = await this.productQuantity.inputValue();
+    async getProductQuantity(): Promise<number> {
+        let quantity = Number(await this.productQuantity.inputValue());
         console.log(`Quantity on cart Page: ${quantity}`);
         return quantity;
     }
