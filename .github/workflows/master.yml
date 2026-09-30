@@ -111,10 +111,13 @@ jobs:
         env:
           ENV: dev
           BASE_URL: ${{ secrets.BASE_URL }}
-          USERNAME: ${{ secrets.USERNAME }}
+          APP_USERNAME: ${{ secrets.APP_USERNAME }}
           PASSWORD: ${{ secrets.PASSWORD }}
-          API_BASE_URL: ${{ secrets.API_BASE_URL }}
+          USER_API_BASE_URL: ${{ secrets.USER_API_BASE_URL }}
           API_TOKEN: ${{ secrets.API_TOKEN }}
+          API_BASE_URL: ${{ secrets.API_BASE_URL }}
+          BOOKER_API_BASE_URL: ${{ secrets.BOOKER_API_BASE_URL }}
+          BOOKING_API_TOKEN: ${{ secrets.BOOKING_API_TOKEN }}
           OAUTH_CLIENT_ID: ${{ secrets.OAUTH_CLIENT_ID }}
           OAUTH_CLIENT_SECRET: ${{ secrets.OAUTH_CLIENT_SECRET }}
           GRANT_TYPE: ${{ secrets.GRANT_TYPE }}
@@ -192,14 +195,17 @@ jobs:
           echo "========================================="
           echo "  Running REGRESSION (all tests) on QA"
           echo "========================================="
-          npx playwright test --project=chromium
+          npx playwright test --project=chromium --grep @regression
         env:
           ENV: qa
           BASE_URL: ${{ secrets.BASE_URL }}
-          USERNAME: ${{ secrets.USERNAME }}
+          APP_USERNAME: ${{ secrets.APP_USERNAME }}
           PASSWORD: ${{ secrets.PASSWORD }}
-          API_BASE_URL: ${{ secrets.API_BASE_URL }}
+          USER_API_BASE_URL: ${{ secrets.USER_API_BASE_URL }}
           API_TOKEN: ${{ secrets.API_TOKEN }}
+          API_BASE_URL: ${{ secrets.API_BASE_URL }}
+          BOOKER_API_BASE_URL: ${{ secrets.BOOKER_API_BASE_URL }}
+          BOOKING_API_TOKEN: ${{ secrets.BOOKING_API_TOKEN }}
           OAUTH_CLIENT_ID: ${{ secrets.OAUTH_CLIENT_ID }}
           OAUTH_CLIENT_SECRET: ${{ secrets.OAUTH_CLIENT_SECRET }}
           GRANT_TYPE: ${{ secrets.GRANT_TYPE }}
@@ -281,10 +287,13 @@ jobs:
         env:
           ENV: stage
           BASE_URL: ${{ secrets.BASE_URL }}
-          USERNAME: ${{ secrets.USERNAME }}
+          APP_USERNAME: ${{ secrets.APP_USERNAME }}
           PASSWORD: ${{ secrets.PASSWORD }}
-          API_BASE_URL: ${{ secrets.API_BASE_URL }}
+          USER_API_BASE_URL: ${{ secrets.USER_API_BASE_URL }}
           API_TOKEN: ${{ secrets.API_TOKEN }}
+          API_BASE_URL: ${{ secrets.API_BASE_URL }}
+          BOOKER_API_BASE_URL: ${{ secrets.BOOKER_API_BASE_URL }}
+          BOOKING_API_TOKEN: ${{ secrets.BOOKING_API_TOKEN }}
           OAUTH_CLIENT_ID: ${{ secrets.OAUTH_CLIENT_ID }}
           OAUTH_CLIENT_SECRET: ${{ secrets.OAUTH_CLIENT_SECRET }}
           GRANT_TYPE: ${{ secrets.GRANT_TYPE }}
@@ -367,10 +376,13 @@ jobs:
         env:
           ENV: prod
           BASE_URL: ${{ secrets.BASE_URL }}
-          USERNAME: ${{ secrets.USERNAME }}
+          APP_USERNAME: ${{ secrets.APP_USERNAME }}
           PASSWORD: ${{ secrets.PASSWORD }}
-          API_BASE_URL: ${{ secrets.API_BASE_URL }}
+          USER_API_BASE_URL: ${{ secrets.USER_API_BASE_URL }}
           API_TOKEN: ${{ secrets.API_TOKEN }}
+          API_BASE_URL: ${{ secrets.API_BASE_URL }}
+          BOOKER_API_BASE_URL: ${{ secrets.BOOKER_API_BASE_URL }}
+          BOOKING_API_TOKEN: ${{ secrets.BOOKING_API_TOKEN }}
           OAUTH_CLIENT_ID: ${{ secrets.OAUTH_CLIENT_ID }}
           OAUTH_CLIENT_SECRET: ${{ secrets.OAUTH_CLIENT_SECRET }}
           GRANT_TYPE: ${{ secrets.GRANT_TYPE }}
