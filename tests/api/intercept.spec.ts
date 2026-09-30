@@ -5,13 +5,13 @@ import { meta } from 'reporting-labs';
 
 // what different network calls are happening in the background
 // web app ---> intercept the network calls and log them
-// **/* winldcard pattern for URLs
+// **/* wildcard pattern for URLs
 
 
 //test to fetch/intercept all the background network calls
 //how many requests were called and which method they are using
 //usecase: need to check if api is working correctly or not
-test('intercept and log requests', async ({ page }) => {
+test('@regression intercept and log requests', async ({ page }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US709', epic: 'ep201', feature: 'F20' });
     await page.route('**/*', async (route) => {
         console.log(route.request().method(), route.request().url()); //whatever requests are happening in the background-give me their methods-GET/POST/PUT...and url
@@ -28,7 +28,7 @@ test('intercept and log requests', async ({ page }) => {
 //security testing
 
 //for which api we want to produce fake data
-test('mock search with fake json', async ({ page }) => {
+test('@regression mock search with fake json', async ({ page }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US710', epic: 'ep201', feature: 'F20' });
     let fakeProducts = [
         { name: 'Fake Macbook Pro', price: '$599' },
@@ -58,7 +58,7 @@ test('mock search with fake json', async ({ page }) => {
      */
 })
 
-test('mock search page with fake HTML', async ({ page }) => {
+test('@regression mock search page with fake HTML', async ({ page }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US711', epic: 'ep201', feature: 'F20' });
     //https://naveenautomationlabs.com/opencart/index.php?route=product/search&search=macbook
     await page.route('**/index.php?route=product/search&search=macbook', async (route) => {
@@ -104,7 +104,7 @@ test('mock search page with fake HTML', async ({ page }) => {
  * response code -- 500 -- Internal server error
  */
 
-test('mock error with 400 response code with fake JSON', async ({ page }) => {
+test('@regression mock error with 400 response code with fake JSON', async ({ page }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US712', epic: 'ep201', feature: 'F20' });
     // https://naveenautomationlabs.com/opencart/index.php?route=account/login
 
@@ -130,7 +130,7 @@ test('mock error with 400 response code with fake JSON', async ({ page }) => {
     // await page.pause();
 })
 
-test('mock error with 500 response code with fake HTML', async ({ page }) => {
+test('@regression mock error with 500 response code with fake HTML', async ({ page }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US713', epic: 'ep201', feature: 'F20' });
     await page.route('****/index.php?route=account/login', async (route) => {
         await route.fulfill({           //used for generating fake data

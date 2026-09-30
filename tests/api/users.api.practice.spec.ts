@@ -69,7 +69,7 @@ test('@regression update a user PUT api test', async ({ request }) => {
     console.log(response.statusText());
 })
 
-test.skip('delete a user DELETE api test', async ({ request }) => {
+test.skip('@regression delete a user DELETE api test', async ({ request }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US723', epic: 'ep201', feature: 'F20' });
     let response = await request.delete('https://gorest.co.in/public/v2/users/8643030', {
         headers: AUTH_TOKEN,

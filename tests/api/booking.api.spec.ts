@@ -39,7 +39,7 @@ let bookingData = {
     "additionalneeds": "Breakfast"
 }
 
-test('booking CRUD with token', async ({ request }) => {
+test('@smoke booking CRUD with token', async ({ request }) => {
     // 1. create a new booking : POST ---no token required
     let bookingResponse = await request.post(`https://restful-booker.herokuapp.com/booking`, {
         headers: { 'Content-Type': 'application/json' },
@@ -80,7 +80,7 @@ test('booking CRUD with token', async ({ request }) => {
     expect(deleteResponse.status()).toBe(201);
 })
 
-test('partial update booking with token', async ({ request }) => {
+test('@regression partial update booking with token', async ({ request }) => {
 
     /** ASSIGNMENT:
      * url:https://restful-booker.herokuapp.com/booking/
@@ -130,7 +130,7 @@ test('partial update booking with token', async ({ request }) => {
  */
 
 // POST ---> bookingID ---> GET/bookingID ---> DELETE/bookingID (204) ---> GET bookingID (404)---> verify
-test('Delete booking using cookie Token test', async ({ apiHelper }) => {
+test('@regression Delete booking using cookie Token test', async ({ apiHelper }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US708', epic: 'ep201', feature: 'F20' });
 
     async function bookingToken(apiHelper: any) {

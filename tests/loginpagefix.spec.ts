@@ -55,13 +55,13 @@ test('@regression user is able to login to app with valid credentials', async ({
     });
 });
 
-test("new customer header exist test", async ({ loginPage }) => {
+test("@smoke new customer header exist test", async ({ loginPage }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_lp', story: 'US204', epic: 'ep201', feature: 'F201', issue: 'bug201' });
 
     expect(await loginPage.isNewCustomerHeaderExist()).toBeTruthy();
 })
 
-test("returning customer header exist test", async ({ loginPage }) => {
+test("@regression returning customer header exist test", async ({ loginPage }) => {
     meta({ priority: 'P2', severity: 'blocker', owner: 'Shraddha_lp', story: 'US205', epic: 'ep201', feature: 'F201', issue: 'bug201' });
     expect(await loginPage.isReturningCustomerHeaderDisplayed()).toBeTruthy();
 })
@@ -85,7 +85,7 @@ test("@regression Invalid email + valid password test", async ({ loginPage }) =>
 let testCSVData = CsvHelper.readCsv('src/testdata/logindata.csv');
 
 for (let row of testCSVData) {
-    test(`login to app with invalid credentials with CSV data - ${row.username} - ${row.password}`, async ({ loginPage }) => {
+    test(`@regression login to app with invalid credentials with CSV data - ${row.username} - ${row.password}`, async ({ loginPage }) => {
         meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_lp', story: 'US207', epic: 'ep201', feature: 'F201', issue: 'bug201' });
         await testData(testCSVData, 'invalid Login Data');//testData() is used to see test data in report
 

@@ -76,7 +76,7 @@ let userArraySchema = {
     "items": JSON.parse(fs.readFileSync('./src/schema/userschema.json', 'utf-8'))
 }
 
-test('get a user - schema test', async ({ userApiHelper }) => {
+test('@regression get a user - schema test', async ({ userApiHelper }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US721', epic: 'ep201', feature: 'F20' });
     // first create a fresh user and then GET the user to get the JSON
     let userData = {
@@ -113,7 +113,7 @@ test('get a user - schema test', async ({ userApiHelper }) => {
  * 
  */
 
-test('get all users - schema test', async ({ userApiHelper }) => {
+test('@regression get all users - schema test', async ({ userApiHelper }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US722', epic: 'ep201', feature: 'F20' });
     //here no need to create user just get the users
     //GET all users:
