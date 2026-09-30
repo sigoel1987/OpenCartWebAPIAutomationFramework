@@ -9,7 +9,7 @@ test.beforeEach(async ({ loginPage }) => { //page is inbuilt fixture
     await loginPage.goToLoginPage();
 });
 
-test('login page title test', async ({ loginPage }) => {
+test('@smoke login page title test', async ({ loginPage }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_lp', story: 'US201', epic: 'ep201', feature: 'F201', issue: 'bug201' });
 
     // let pageTitle = await loginPage.getLoginPageTitle();
@@ -24,13 +24,13 @@ test('login page title test', async ({ loginPage }) => {
 
 })
 
-test('forgot pwd link exist test', async ({ loginPage }) => {
+test('@regression forgot pwd link exist test', async ({ loginPage }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_lp', story: 'US202', epic: 'ep201', feature: 'F201', issue: 'bug201' });
 
     expect(await loginPage.isForgottenPwdLinkExist()).toBeTruthy();
 });
 
-test('user is able to login to app with valid credentials', async ({ loginPage, homePage }) => {
+test('@regression user is able to login to app with valid credentials', async ({ loginPage, homePage }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_lp', story: 'US203', epic: 'ep201', feature: 'F201', issue: 'bug201' });
 
     await testData({ username: process.env.APP_USERNAME!, password: process.env.PASSWORD! }, 'Login')
@@ -68,7 +68,7 @@ test("returning customer header exist test", async ({ loginPage }) => {
 
 // Invalid email + valid password test
 
-test("Invalid email + valid password test", async ({ loginPage }) => {
+test("@regression Invalid email + valid password test", async ({ loginPage }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_lp', story: 'US206', epic: 'ep201', feature: 'F201', issue: 'bug201' });
     await loginPage.doLogin("pwapril123@pw.com", 'pw123');
     expect(await loginPage.isInvalidLoginErrorDisplayed()).toBeTruthy();
@@ -105,7 +105,7 @@ for (let row of testCSVData) {
 //  */
 let testExcelData = ExcelHelper.readExcel('src/testdata/opencarttestdata.xlsx', 'login');
 for (let row of testExcelData) {
-    test(`login to app with invalid credentials with Excel Data - ${row.username} - ${row.password}`, async ({ loginPage }) => {
+    test(`@regression login to app with invalid credentials with Excel Data - ${row.username} - ${row.password}`, async ({ loginPage }) => {
         meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_lp', story: 'US208', epic: 'ep201', feature: 'F201', issue: 'bug201' });
         await testData(testExcelData, 'Invalid Login Data');//testData() is used to see test data in report
 
@@ -123,7 +123,7 @@ for (let row of testExcelData) {
 let testJSONData = JsonHelper.readJson('src/testdata/logindata.json');
 
 for (let row of testJSONData) {
-    test(`login to app with invalid credentials with JSON Data - ${row.username} - ${row.password}`, async ({ loginPage }) => {
+    test(`@regression login to app with invalid credentials with JSON Data - ${row.username} - ${row.password}`, async ({ loginPage }) => {
         meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_lp', story: 'US209', epic: 'ep201', feature: 'F201', issue: 'bug201' });
         await testData(testJSONData, 'Invalid Login Data');//testData() is used to see test data in report
 
@@ -135,23 +135,23 @@ for (let row of testJSONData) {
 
 
 //common features test:
-test('App logo exists on Login Page', async ({ basePage }) => {
+test('@smoke App logo exists on Login Page', async ({ basePage }) => {
     meta({ priority: 'P2', severity: 'major', owner: 'Shraddha_lp', story: 'US210', epic: 'ep201', feature: 'F201', issue: 'bug201' });
 
     expect(await basePage.isLogoVisible()).toBeTruthy();
 })
 
-test('Search Box exists on Login Page', async ({ basePage }) => {
+test('@smoke Search Box exists on Login Page', async ({ basePage }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_lp', story: 'US211', epic: 'ep201', feature: 'F201', issue: 'bug201' });
     expect(await basePage.isSearchBoxVisible()).toBeTruthy();
 })
 
-test('Cart exists on Login Page', async ({ basePage }) => {
+test('@smoke Cart exists on Login Page', async ({ basePage }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_lp', story: 'US212', epic: 'ep201', feature: 'F201', issue: 'bug201' });
     expect(await basePage.isCartButtonVisible()).toBeTruthy();
 })
 
-test('Footers exists on Login Page', async ({ basePage }) => {
+test('@smoke Footers exists on Login Page', async ({ basePage }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_lp', story: 'US213', epic: 'ep201', feature: 'F201', issue: 'bug201' });
     expect(await basePage.getPageFooterscount()).toBe(16);
 });

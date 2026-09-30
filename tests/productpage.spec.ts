@@ -8,7 +8,7 @@ test.beforeEach(async ({ loginPage }) => { //page is inbuilt fixture
 
 
 // verify product header
-test('verify product header', async ({ homePage, searchResultsPage, productInfoPage }) => {
+test('@smoke verify product header', async ({ homePage, searchResultsPage, productInfoPage }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_pp', story: 'US301', epic: 'ep201', feature: 'F20' });
     homePage.doSearch('macbook');
     searchResultsPage.selectProduct('MacBook Pro');
@@ -17,7 +17,7 @@ test('verify product header', async ({ homePage, searchResultsPage, productInfoP
 
 // verify product images count
 
-test('verify product images count', async ({ homePage, searchResultsPage, productInfoPage }) => {
+test('@regression verify product images count', async ({ homePage, searchResultsPage, productInfoPage }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_pp', story: 'US302', epic: 'ep201', feature: 'F20' });
 
     homePage.doSearch('macbook');
@@ -28,7 +28,7 @@ test('verify product images count', async ({ homePage, searchResultsPage, produc
 // verify product information/data
 // expect productheader, productimagescount,brand,product code, Rewards Points, Availability
 
-test('verify product information/data', async ({ homePage, searchResultsPage, productInfoPage }) => {
+test('@regression verify product information/data', async ({ homePage, searchResultsPage, productInfoPage }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_pp', story: 'US303', epic: 'ep201', feature: 'F20' });
 
     homePage.doSearch('macbook');
@@ -52,7 +52,7 @@ test('verify product information/data', async ({ homePage, searchResultsPage, pr
     // await page.pause();
 })
 
-test('verify product is added to cart', async ({ homePage, searchResultsPage, productInfoPage }) => {
+test('@regression verify product is added to cart', async ({ homePage, searchResultsPage, productInfoPage }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_pp', story: 'US304', epic: 'ep201', feature: 'F20' });
     await productInfoPage.removeAllProductsFromCart();
     await homePage.doSearch('macbook');
@@ -64,22 +64,22 @@ test('verify product is added to cart', async ({ homePage, searchResultsPage, pr
 
 
 //common features test:
-test('App logo exists on product Page', async ({ basePage }) => {
+test('@smoke App logo exists on product Page', async ({ basePage }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_pp', story: 'US305', epic: 'ep201', feature: 'F20' });
     expect(await basePage.isLogoVisible()).toBeTruthy();
 })
 
-test('Search Box exists on Login Page', async ({ basePage }) => {
+test('@smoke Search Box exists on Login Page', async ({ basePage }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_pp', story: 'US306', epic: 'ep201', feature: 'F20' });
     expect(await basePage.isSearchBoxVisible()).toBeTruthy();
 })
 
-test('Cart exists on Login Page', async ({ basePage }) => {
+test('@smoke Cart exists on Login Page', async ({ basePage }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_pp', story: 'US307', epic: 'ep201', feature: 'F20' });
     expect(await basePage.isCartButtonVisible()).toBeTruthy();
 })
 
-test('Footers exists on Login Page', async ({ basePage }) => {
+test('@smoke Footers exists on Login Page', async ({ basePage }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_pp', story: 'US308', epic: 'ep201', feature: 'F20' });
     expect(await basePage.getPageFooterscount()).toBe(16);
 });

@@ -5,7 +5,7 @@ let AUTH_TOKEN = {
     Authorization: 'Bearer 2c663241fc0b8d180238e42b83a3f63292b382deff70fc9c7b0991583a188f92'
 };
 
-test('get all users GET api test', async ({ request }) => {
+test('@regression get all users GET api test', async ({ request }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha', story: 'US102', epic: 'ep201', feature: 'F20' });
 
     let response: APIResponse = await request.get('https://gorest.co.in/public/v2/users', {
@@ -21,7 +21,7 @@ test('get all users GET api test', async ({ request }) => {
     expect(response.status()).toBe(200);
 })
 
-test('create a user POST api test', async ({ request }) => {
+test('@regression create a user POST api test', async ({ request }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha', story: 'US102', epic: 'ep201', feature: 'F20' });
 
     //user javascript object: this object should get converted into JSON
@@ -49,7 +49,7 @@ test('create a user POST api test', async ({ request }) => {
 })
 
 
-test('update a user PUT api test', async ({ request }) => {
+test('@regression update a user PUT api test', async ({ request }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha', story: 'US102', epic: 'ep201', feature: 'F20' });
 
     // supply user data

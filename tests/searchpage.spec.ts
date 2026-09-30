@@ -18,7 +18,7 @@ test.beforeEach(async ({ loginPage }) => {
 // verify search
 let productCsvData = CsvHelper.readCsv('src/testdata/product.csv');
 for (let row of productCsvData) {
-    test(`verify search results count - ${row.searchkey} - ${row.productname}`, async ({ homePage, searchResultsPage }) => {
+    test(`@regression verify search results count - ${row.searchkey} - ${row.productname}`, async ({ homePage, searchResultsPage }) => {
         meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_sp', story: 'US501', epic: 'ep201', feature: 'F20' });
         await homePage.doSearch(row.searchkey);
         let productResultCount = await searchResultsPage.getProductSearchResultsCount();
@@ -32,7 +32,7 @@ for (let row of productCsvData) {
  */
 
 for (let row of productCsvData) {
-    test(`verify user is able to land on the product page - ${row.searchkey} - ${row.productname}`, async ({ homePage, searchResultsPage, page }) => {
+    test(`@regression verify user is able to land on the product page - ${row.searchkey} - ${row.productname}`, async ({ homePage, searchResultsPage, page }) => {
         meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_sp', story: 'US502', epic: 'ep201', feature: 'F20' });
         await homePage.doSearch(row.searchkey);
         await searchResultsPage.selectProduct(row.productname);
@@ -47,7 +47,7 @@ for (let row of productCsvData) {
 
 let productExcelData = ExcelHelper.readExcel('src/testdata/opencarttestdata.xlsx', 'product');
 for (let row of productExcelData) {
-    test(`verify search results count with Excel data- ${row.searchkey} - ${row.productname}`, async ({ homePage, searchResultsPage }) => {
+    test(`@regression verify search results count with Excel data- ${row.searchkey} - ${row.productname}`, async ({ homePage, searchResultsPage }) => {
         meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_sp', story: 'US503', epic: 'ep201', feature: 'F20' });
         await homePage.doSearch(row.searchkey);
         let productResultCount = await searchResultsPage.getProductSearchResultsCount();
@@ -57,22 +57,22 @@ for (let row of productExcelData) {
 }
 
 //common features test:
-test('App logo exists on Login Page', async ({ basePage }) => {
+test('@smoke App logo exists on Login Page', async ({ basePage }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_sp', story: 'US504', epic: 'ep201', feature: 'F20' });
     expect(await basePage.isLogoVisible()).toBeTruthy();
 })
 
-test('Search Box exists on Login Page', async ({ basePage }) => {
+test('@smoke Search Box exists on Login Page', async ({ basePage }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_sp', story: 'US505', epic: 'ep201', feature: 'F20' });
     expect(await basePage.isSearchBoxVisible()).toBeTruthy();
 })
 
-test('Cart exists on Login Page', async ({ basePage }) => {
+test('@smoke Cart exists on Login Page', async ({ basePage }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_sp', story: 'US506', epic: 'ep201', feature: 'F20' });
     expect(await basePage.isCartButtonVisible()).toBeTruthy();
 })
 
-test('Footers exists on Login Page', async ({ basePage }) => {
+test('@smoke Footers exists on Login Page', async ({ basePage }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_sp', story: 'US507', epic: 'ep201', feature: 'F20' });
     expect(await basePage.getPageFooterscount()).toBe(16);
 });
