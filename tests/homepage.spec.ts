@@ -14,17 +14,17 @@ test.beforeEach(async ({ page }) => {
 })
 
 
-test('@smoke home page title test', async () => {
+test('home page title test', async () => {
     let homePageTitle = await homePage.getHomePageTitle();
     console.log(`Home Page Title: ${homePageTitle}`);
     expect (homePageTitle).toBe('My Account');
 })
 
-test('@smoke logout link exist test', async () => {
+test('logout link exist test', async () => {
     expect(await homePage.isLogoutLinkExist()).toBeTruthy();
 })
 
-test('@smoke home page headers exist test', async () => {
+test('home page headers exist test', async () => {
     let allHeaders = await homePage.getHomePageHeaders();
     console.log('home page headers: ', allHeaders);
     console.log(`Home page headers: ${allHeaders}`);

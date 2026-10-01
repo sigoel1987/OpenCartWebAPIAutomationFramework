@@ -28,7 +28,7 @@ test('@smoke forgot pwd link exist test', async () => {
     expect(await loginPage.isForgottenPwdLinkExist()).toBeTruthy();
 })
 
-test('@smoke @regression user is able to login to app', async () => {
+test('user is able to login to app', async () => {
     await loginPage.doLogin('pwapril@pw.com', 'pw123');
     // writing soft assertions here - if test fails on line 30 then it will continue
     expect.soft(await homePage.isLogoutLinkExist()).toBeTruthy();
