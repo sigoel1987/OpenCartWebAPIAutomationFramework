@@ -1,0 +1,3 @@
+user creds: pwapril@pw.com - pw123
+home page headers:  [ 'My Account', 'My Orders', 'My Affiliate Account', 'Newsletter' ]
+Home page headers: My Account,My Orders,My Affiliate Account,Newsletter
