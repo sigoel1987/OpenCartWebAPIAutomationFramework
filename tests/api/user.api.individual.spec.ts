@@ -26,7 +26,7 @@ async function createUser(apiHelper: any) {
 // test1: Create a user test + verify : AAA
 // POST ----- return userID ----> GET/userID ----> verify
 
-test('@regression create a user test + verify : AAA', async ({ userApiHelper }) => {
+test('create a user test + verify : AAA', async ({ userApiHelper }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US717', epic: 'ep201', feature: 'F20' });
     // create a fresh user
     let userResponse = await createUser(userApiHelper);
@@ -39,7 +39,7 @@ test('@regression create a user test + verify : AAA', async ({ userApiHelper }) 
 
 // Test2: Update a user test + verify: AAA
 // POST ---> userID ---> GET/userID ---> PUT/userID ---> GET userID ---> verify
-test('@regression Update a user test', async ({ userApiHelper }) => {
+test('Update a user test', async ({ userApiHelper }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US718', epic: 'ep201', feature: 'F20' });
     // 1. create a user:
     let userResponse = await createUser(userApiHelper);
@@ -66,7 +66,7 @@ test('@regression Update a user test', async ({ userApiHelper }) => {
 
 // Test3: Delete a user test + verify: AAA
 // POST ---> userID ---> GET/userID ---> DELETE/userID (204) ---> GET userID (404)---> verify
-test('@regression Delete a user using Basic Token test', async ({ userApiHelper }) => {
+test('Delete a user using Basic Token test', async ({ userApiHelper }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US719', epic: 'ep201', feature: 'F20' });
     // 1. create a user:
     let userResponse = await createUser(userApiHelper);
@@ -88,7 +88,7 @@ test('@regression Delete a user using Basic Token test', async ({ userApiHelper 
 
 // Test4: PATCH a user test + verify: AAA
 // POST ---> userID ---> GET/userID ---> PATCH/userID ---> GET userID ---> verify
-test('@regression Update a user partially test', async ({ userApiHelper }) => {
+test('Update a user partially test', async ({ userApiHelper }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US720', epic: 'ep201', feature: 'F20' });
     // 1. create a user:
     let userResponse = await createUser(userApiHelper);

@@ -19,7 +19,7 @@ let userId: number;
 test.describe.serial('running e2e go rest crud apis tests', () => {
 
     // GET test:
-    test('@regression GET API - get all users', async ({ userApiHelper }) => {
+    test('GET API - get all users', async ({ userApiHelper }) => {
         meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US724', epic: 'ep201', feature: 'F20' });
         let response = await userApiHelper.get('/public/v2/users', AUTH_HEADER);
 
@@ -28,7 +28,7 @@ test.describe.serial('running e2e go rest crud apis tests', () => {
     });
 
     // POST test:
-    test('@regression POST API - create a fresh user', async ({ userApiHelper }) => {
+    test('POST API - create a fresh user', async ({ userApiHelper }) => {
         meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US725', epic: 'ep201', feature: 'F20' });
         let userData = {
             "name": "PW API Automation Sigoel",
@@ -45,7 +45,7 @@ test.describe.serial('running e2e go rest crud apis tests', () => {
     });
 
     // PUT test:
-    test('@regression PUT API - update a user', async ({ userApiHelper }) => {
+    test('PUT API - update a user', async ({ userApiHelper }) => {
         meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US726', epic: 'ep201', feature: 'F20' });
         let userData = {
             "name": "PW API Automation Sigoel test",
@@ -61,7 +61,7 @@ test.describe.serial('running e2e go rest crud apis tests', () => {
     });
 
     // DELETE test:
-    test('@regression DELETE API - Delete a user', async ({ userApiHelper }) => {
+    test('DELETE API - Delete a user', async ({ userApiHelper }) => {
         meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US727', epic: 'ep201', feature: 'F20' });
         let response = await userApiHelper.delete(`/public/v2/users/${userId}`, AUTH_HEADER);
         expect(response.status).toBe(204);
@@ -69,7 +69,7 @@ test.describe.serial('running e2e go rest crud apis tests', () => {
 
     //final GET the user to validate if user exist or not:
 
-    test('@regression GET API - fetch the user', async ({ userApiHelper }) => {
+    test('GET API - fetch the user', async ({ userApiHelper }) => {
         meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US728', epic: 'ep201', feature: 'F20' });
         let response = await userApiHelper.get(`/public/v2/users/${userId}`, AUTH_HEADER);
         expect(response.status).toBe(404);

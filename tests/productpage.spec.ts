@@ -52,7 +52,7 @@ test('@regression verify product information/data', async ({ homePage, searchRes
     // await page.pause();
 })
 
-test('@regression verify product is added to cart', async ({ homePage, searchResultsPage, productInfoPage }) => {
+test('verify product is added to cart', async ({ homePage, searchResultsPage, productInfoPage }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_pp', story: 'US304', epic: 'ep201', feature: 'F20' });
     await productInfoPage.removeAllProductsFromCart();
     await homePage.doSearch('macbook');
