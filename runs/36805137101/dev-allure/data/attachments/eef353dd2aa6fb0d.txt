@@ -1,0 +1,3 @@
+Auth api response:  { token: 'f821c2948748532' }
+token ------> f821c2948748532
+Booking ID:  4115
