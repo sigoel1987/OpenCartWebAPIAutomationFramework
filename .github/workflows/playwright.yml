@@ -1,12 +1,12 @@
 name: Playwright Tests
 
 on:
-  # schedule:
-  #   - cron: '30 21 * * 1-4'  # Mon-Fri 8PM IST
-  # push:
-  #   branches: [main]
-  # pull_request:
-  #   branches: [main]
+  schedule:
+    - cron: '30 21 * * 1-2'  # Mon-Fri 8PM IST
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
   workflow_dispatch:
     inputs:
       environment:
