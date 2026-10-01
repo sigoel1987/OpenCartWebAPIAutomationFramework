@@ -3,6 +3,13 @@
 # REPO: sigoel1987/OpenCartWebAPIAutomationFramework
 # DEV REPO: jglick/simple-maven-project-with-tests
 # ═══════════════════════════════════════════════════════════════
+# "Run up to environment" — the dropdown controls how far the
+# pipeline goes:
+#   dev   → Build → DEV only
+#   QA    → Build → DEV → QA
+#   stage → Build → DEV → QA → STAGE
+#   Prod  → Build → DEV → QA → STAGE → PROD
+# ═══════════════════════════════════════════════════════════════
 
 name: Master CI/CD Pipeline
 
@@ -24,6 +31,7 @@ jobs:
 
   # ═════════════════════════════════════════════════════
   # STEP 1: BUILD APP + UNIT TESTS (DEV REPO - MAVEN)
+  #   ➜ Always runs
   # ═════════════════════════════════════════════════════
   build:
     name: Build & Unit Tests
@@ -58,6 +66,7 @@ jobs:
 
   # ═════════════════════════════════════════════════════
   # STEP 2: DEPLOY DEV + SANITY TESTS
+  #   ➜ Always runs (every option includes DEV)
   # ═════════════════════════════════════════════════════
   deploy-dev:
     name: Deploy to DEV
@@ -102,6 +111,13 @@ jobs:
         if: steps.pw-cache-dev.outputs.cache-hit == 'true'
         run: npx playwright install-deps chromium
 
+      - name: Restore reportingLabs history
+        uses: actions/cache@v4
+        with:
+          path: reporting-labs.history.json
+          key: reporting-labs-history-dev-${{ github.run_id }}
+          restore-keys: reporting-labs-history-dev-
+
       - name: Run Sanity Tests on DEV
         run: |
           echo "========================================="
@@ -144,12 +160,22 @@ jobs:
           path: allure-report/
           retention-days: 30
 
+      - name: Upload DEV reportingLabs Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dev-sanity-reportinglabs-report
+          path: reporting-labs/
+          retention-days: 30
+
   # ═════════════════════════════════════════════════════
   # STEP 3: DEPLOY QA + REGRESSION TESTS
+  #   ➜ Runs when: QA, stage, or Prod
   # ═════════════════════════════════════════════════════
   deploy-qa:
     name: Deploy to QA
     needs: sanity-dev
+    if: contains(fromJSON('["QA","stage","Prod"]'), github.event.inputs.environment)
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to QA
@@ -158,6 +184,7 @@ jobs:
   regression-qa:
     name: QA - Regression Tests
     needs: deploy-qa
+    if: contains(fromJSON('["QA","stage","Prod"]'), github.event.inputs.environment)
     runs-on: ubuntu-latest
     environment: QA
     steps:
@@ -189,6 +216,13 @@ jobs:
       - name: Install Playwright OS deps only
         if: steps.pw-cache-qa.outputs.cache-hit == 'true'
         run: npx playwright install-deps chromium
+
+      - name: Restore reportingLabs history
+        uses: actions/cache@v4
+        with:
+          path: reporting-labs.history.json
+          key: reporting-labs-history-qa-${{ github.run_id }}
+          restore-keys: reporting-labs-history-qa-
 
       - name: Run Regression Tests on QA
         run: |
@@ -232,12 +266,22 @@ jobs:
           path: allure-report/
           retention-days: 30
 
+      - name: Upload QA reportingLabs Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: qa-regression-reportinglabs-report
+          path: reporting-labs/
+          retention-days: 30
+
   # ═════════════════════════════════════════════════════
   # STEP 4: DEPLOY STAGE + SANITY TESTS
+  #   ➜ Runs when: stage or Prod
   # ═════════════════════════════════════════════════════
   deploy-stage:
     name: Deploy to STAGE
     needs: regression-qa
+    if: contains(fromJSON('["stage","Prod"]'), github.event.inputs.environment)
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to STAGE
@@ -246,6 +290,7 @@ jobs:
   sanity-stage:
     name: STAGE - Sanity Tests
     needs: deploy-stage
+    if: contains(fromJSON('["stage","Prod"]'), github.event.inputs.environment)
     runs-on: ubuntu-latest
     environment: stage
     steps:
@@ -277,6 +322,13 @@ jobs:
       - name: Install Playwright OS deps only
         if: steps.pw-cache-stage.outputs.cache-hit == 'true'
         run: npx playwright install-deps chromium
+
+      - name: Restore reportingLabs history
+        uses: actions/cache@v4
+        with:
+          path: reporting-labs.history.json
+          key: reporting-labs-history-stage-${{ github.run_id }}
+          restore-keys: reporting-labs-history-stage-
 
       - name: Run Sanity Tests on STAGE
         run: |
@@ -320,12 +372,22 @@ jobs:
           path: allure-report/
           retention-days: 30
 
+      - name: Upload STAGE reportingLabs Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: stage-sanity-reportinglabs-report
+          path: reporting-labs/
+          retention-days: 30
+
   # ═════════════════════════════════════════════════════
   # STEP 5: DEPLOY PROD + SMOKE TESTS
+  #   ➜ Runs when: Prod only
   # ═════════════════════════════════════════════════════
   deploy-prod:
     name: Deploy to PROD
     needs: sanity-stage
+    if: github.event.inputs.environment == 'Prod'
     runs-on: ubuntu-latest
     environment: Prod
     steps:
@@ -335,6 +397,7 @@ jobs:
   smoke-prod:
     name: PROD - Smoke Tests
     needs: deploy-prod
+    if: github.event.inputs.environment == 'Prod'
     runs-on: ubuntu-latest
     environment: Prod
     steps:
@@ -366,6 +429,13 @@ jobs:
       - name: Install Playwright OS deps only
         if: steps.pw-cache-prod.outputs.cache-hit == 'true'
         run: npx playwright install-deps chromium
+
+      - name: Restore reportingLabs history
+        uses: actions/cache@v4
+        with:
+          path: reporting-labs.history.json
+          key: reporting-labs-history-prod-${{ github.run_id }}
+          restore-keys: reporting-labs-history-prod-
 
       - name: Run Smoke Tests on PROD
         run: |
@@ -409,8 +479,16 @@ jobs:
           path: allure-report/
           retention-days: 30
 
+      - name: Upload PROD reportingLabs Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: prod-smoke-reportinglabs-report
+          path: reporting-labs/
+          retention-days: 30
+
   # ═════════════════════════════════════════════════════
-  # PIPELINE SUMMARY
+  # PIPELINE SUMMARY (always runs — handles skipped jobs)
   # ═════════════════════════════════════════════════════
   summary:
     name: Pipeline Summary
@@ -423,9 +501,14 @@ jobs:
           echo "═══════════════════════════════════════════"
           echo "       MASTER CI/CD PIPELINE SUMMARY"
           echo "═══════════════════════════════════════════"
+          echo "  Selected env:    ${{ github.event.inputs.environment }}"
+          echo "─────────────────────────────────────────"
           echo "  Build + Unit:    ${{ needs.build.result }}"
           echo "  DEV Sanity:      ${{ needs.sanity-dev.result }}"
           echo "  QA Regression:   ${{ needs.regression-qa.result }}"
           echo "  STAGE Sanity:    ${{ needs.sanity-stage.result }}"
           echo "  PROD Smoke:      ${{ needs.smoke-prod.result }}"
+          echo "═══════════════════════════════════════════"
+          echo ""
+          echo "  ℹ️  'skipped' = not included in this run"
           echo "═══════════════════════════════════════════"
