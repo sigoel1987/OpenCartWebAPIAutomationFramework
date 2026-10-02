@@ -1,0 +1,26 @@
+Auth api response:  { token: '8f305bb695b1401' }
+token ------> 8f305bb695b1401
+{ token: 'ad000abc369cf08' } 200
+Booking api cookie token: ad000abc369cf08
+{
+  bookingid: 19,
+  booking: {
+    firstname: 'Shraddha',
+    lastname: 'Goel',
+    totalprice: 500,
+    depositpaid: true,
+    bookingdates: { checkin: '2018-01-01', checkout: '2019-01-01' },
+    additionalneeds: 'Breakfast'
+  }
+} 200
+created booking: 19
+{
+  firstname: 'Shraddha',
+  lastname: 'Goel',
+  totalprice: 500,
+  depositpaid: true,
+  bookingdates: { checkin: '2018-01-01', checkout: '2019-01-01' },
+  additionalneeds: 'Breakfast'
+} 200
+User is deleted
+Not Found 404
