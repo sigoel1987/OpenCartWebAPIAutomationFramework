@@ -1,0 +1,3 @@
+Auth api response:  { token: '30d701b7ea1e2b5' }
+token ------> 30d701b7ea1e2b5
+Booking ID:  1561
