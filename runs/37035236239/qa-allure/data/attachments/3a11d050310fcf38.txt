@@ -1,0 +1,15 @@
+{
+  id: 8646525,
+  name: 'apiautomationsigoel',
+  email: 'automation.sigoel_1790959239933@pw.com',
+  gender: 'female',
+  status: 'active'
+} 201
+created user id:  8646525
+{
+  id: 8646525,
+  name: 'apiautomationsigoel',
+  email: 'automation.sigoel_1790959239933@pw.com',
+  gender: 'female',
+  status: 'active'
+} 200

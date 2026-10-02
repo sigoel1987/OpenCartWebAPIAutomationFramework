@@ -1,0 +1,12 @@
+Auth api response:  { token: 'd7df705838c16a7' }
+token ------> d7df705838c16a7
+created new booking:  32
+partial update in the booking:  {
+  firstname: 'James',
+  lastname: 'Brown',
+  totalprice: 500,
+  depositpaid: true,
+  bookingdates: { checkin: '2018-01-01', checkout: '2019-01-01' },
+  additionalneeds: 'Breakfast'
+}
+update booking name is: JamesBrown
