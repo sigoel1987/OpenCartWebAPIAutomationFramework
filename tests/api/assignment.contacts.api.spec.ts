@@ -62,7 +62,7 @@ test.beforeEach('generate the token', async ({ request }) => {
 
 });
 
-test('@regression Contact APP E2E flow - create, verify, delete, validateList', async ({ request, page }) => {
+test('Contact APP E2E flow - create, verify, delete, validateList', async ({ request, page }) => {
     meta({ priority: 'P1', severity: 'major', owner: 'Shraddha_api', story: 'US701', epic: 'ep201', feature: 'F20' });
 
     // STEP2: create contact POST (using token and body) >>

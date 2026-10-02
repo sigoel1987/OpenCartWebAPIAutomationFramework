@@ -21,7 +21,7 @@ test('@regression get all users GET api test', async ({ request }) => {
     expect(response.status()).toBe(200);
 })
 
-test('@regression create a user POST api test', async ({ request }) => {
+test('create a user POST api test', async ({ request }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha', story: 'US102', epic: 'ep201', feature: 'F20' });
 
     //user javascript object: this object should get converted into JSON
@@ -49,7 +49,7 @@ test('@regression create a user POST api test', async ({ request }) => {
 })
 
 
-test('@regression update a user PUT api test', async ({ request }) => {
+test('update a user PUT api test', async ({ request }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha', story: 'US102', epic: 'ep201', feature: 'F20' });
 
     // supply user data
@@ -69,7 +69,7 @@ test('@regression update a user PUT api test', async ({ request }) => {
     console.log(response.statusText());
 })
 
-test.skip('@regression delete a user DELETE api test', async ({ request }) => {
+test.skip('delete a user DELETE api test', async ({ request }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US723', epic: 'ep201', feature: 'F20' });
     let response = await request.delete('https://gorest.co.in/public/v2/users/8643030', {
         headers: AUTH_TOKEN,

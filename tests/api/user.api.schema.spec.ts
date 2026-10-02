@@ -113,7 +113,7 @@ test('@regression get a user - schema test', async ({ userApiHelper }) => {
  * 
  */
 
-test('@regression get all users - schema test', async ({ userApiHelper }) => {
+test('get all users - schema test', async ({ userApiHelper }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US722', epic: 'ep201', feature: 'F20' });
     //here no need to create user just get the users
     //GET all users:

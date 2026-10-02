@@ -229,7 +229,7 @@ jobs:
           echo "========================================="
           echo "  Running REGRESSION (all tests) on QA"
           echo "========================================="
-          npx playwright test --project=chromium --grep @smoke
+          npx playwright test --project=chromium --grep @regression
         env:
           ENV: qa
           BASE_URL: ${{ secrets.BASE_URL }}

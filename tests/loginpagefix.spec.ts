@@ -30,7 +30,7 @@ test('@regression forgot pwd link exist test', async ({ loginPage }) => {
     expect(await loginPage.isForgottenPwdLinkExist()).toBeTruthy();
 });
 
-test('@regression user is able to login to app with valid credentials', async ({ loginPage, homePage }) => {
+test('user is able to login to app with valid credentials', async ({ loginPage, homePage }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_lp', story: 'US203', epic: 'ep201', feature: 'F201', issue: 'bug201' });
 
     await testData({ username: process.env.APP_USERNAME!, password: process.env.PASSWORD! }, 'Login')
@@ -68,7 +68,7 @@ test("@regression returning customer header exist test", async ({ loginPage }) =
 
 // Invalid email + valid password test
 
-test("@regression Invalid email + valid password test", async ({ loginPage }) => {
+test("Invalid email + valid password test", async ({ loginPage }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_lp', story: 'US206', epic: 'ep201', feature: 'F201', issue: 'bug201' });
     await loginPage.doLogin("pwapril123@pw.com", 'pw123');
     expect(await loginPage.isInvalidLoginErrorDisplayed()).toBeTruthy();
@@ -105,7 +105,7 @@ for (let row of testCSVData) {
 //  */
 let testExcelData = ExcelHelper.readExcel('src/testdata/opencarttestdata.xlsx', 'login');
 for (let row of testExcelData) {
-    test(`@regression login to app with invalid credentials with Excel Data - ${row.username} - ${row.password}`, async ({ loginPage }) => {
+    test(`login to app with invalid credentials with Excel Data - ${row.username} - ${row.password}`, async ({ loginPage }) => {
         meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_lp', story: 'US208', epic: 'ep201', feature: 'F201', issue: 'bug201' });
         await testData(testExcelData, 'Invalid Login Data');//testData() is used to see test data in report
 
@@ -123,7 +123,7 @@ for (let row of testExcelData) {
 let testJSONData = JsonHelper.readJson('src/testdata/logindata.json');
 
 for (let row of testJSONData) {
-    test(`@regression login to app with invalid credentials with JSON Data - ${row.username} - ${row.password}`, async ({ loginPage }) => {
+    test(`login to app with invalid credentials with JSON Data - ${row.username} - ${row.password}`, async ({ loginPage }) => {
         meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_lp', story: 'US209', epic: 'ep201', feature: 'F201', issue: 'bug201' });
         await testData(testJSONData, 'Invalid Login Data');//testData() is used to see test data in report
 

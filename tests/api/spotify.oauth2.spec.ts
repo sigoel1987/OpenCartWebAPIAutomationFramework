@@ -68,7 +68,7 @@ test('@regression get albums data test', async ({ request }) => {
     expect(jsonBody.images.length).toBe(3);
 })
 
-test('@regression get artist data test', async ({ request }) => {
+test('get artist data test', async ({ request }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US715', epic: 'ep201', feature: 'F20' });
     // https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg
     let endpointURL = '/v1/artists/0TnOYISbd1XYRBk9myaseg';
@@ -88,7 +88,7 @@ test('@regression get artist data test', async ({ request }) => {
 })
 
 
-test('@regression get track data test', async ({ request }) => {
+test('get track data test', async ({ request }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_api', story: 'US716', epic: 'ep201', feature: 'F20' });
     // https://api.spotify.com/v1/tracks/2iblMMIgSznA464mNov7A8
     let endpointURL = '/v1/tracks/2iblMMIgSznA464mNov7A8';

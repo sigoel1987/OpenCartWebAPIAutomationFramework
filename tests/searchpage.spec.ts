@@ -47,7 +47,7 @@ for (let row of productCsvData) {
 
 let productExcelData = ExcelHelper.readExcel('src/testdata/opencarttestdata.xlsx', 'product');
 for (let row of productExcelData) {
-    test(`@regression verify search results count with Excel data- ${row.searchkey} - ${row.productname}`, async ({ homePage, searchResultsPage }) => {
+    test(`verify search results count with Excel data- ${row.searchkey} - ${row.productname}`, async ({ homePage, searchResultsPage }) => {
         meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_sp', story: 'US503', epic: 'ep201', feature: 'F20' });
         await homePage.doSearch(row.searchkey);
         let productResultCount = await searchResultsPage.getProductSearchResultsCount();

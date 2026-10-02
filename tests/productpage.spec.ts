@@ -17,7 +17,7 @@ test('@smoke verify product header', async ({ homePage, searchResultsPage, produ
 
 // verify product images count
 
-test('@regression verify product images count', async ({ homePage, searchResultsPage, productInfoPage }) => {
+test('verify product images count', async ({ homePage, searchResultsPage, productInfoPage }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_pp', story: 'US302', epic: 'ep201', feature: 'F20' });
 
     homePage.doSearch('macbook');
@@ -28,7 +28,7 @@ test('@regression verify product images count', async ({ homePage, searchResults
 // verify product information/data
 // expect productheader, productimagescount,brand,product code, Rewards Points, Availability
 
-test('@regression verify product information/data', async ({ homePage, searchResultsPage, productInfoPage }) => {
+test('verify product information/data', async ({ homePage, searchResultsPage, productInfoPage }) => {
     meta({ priority: 'P2', severity: 'minor', owner: 'Shraddha_pp', story: 'US303', epic: 'ep201', feature: 'F20' });
 
     homePage.doSearch('macbook');
