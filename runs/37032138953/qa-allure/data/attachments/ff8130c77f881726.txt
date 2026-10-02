@@ -1,0 +1,26 @@
+Auth api response:  { token: '392597cbc0cd53f' }
+token ------> 392597cbc0cd53f
+{ token: '624dfd31cfdb5be' } 200
+Booking api cookie token: 624dfd31cfdb5be
+{
+  bookingid: 1307,
+  booking: {
+    firstname: 'Shraddha',
+    lastname: 'Goel',
+    totalprice: 500,
+    depositpaid: true,
+    bookingdates: { checkin: '2018-01-01', checkout: '2019-01-01' },
+    additionalneeds: 'Breakfast'
+  }
+} 200
+created booking: 1307
+{
+  firstname: 'Shraddha',
+  lastname: 'Goel',
+  totalprice: 500,
+  depositpaid: true,
+  bookingdates: { checkin: '2018-01-01', checkout: '2019-01-01' },
+  additionalneeds: 'Breakfast'
+} 200
+User is deleted
+Not Found 404

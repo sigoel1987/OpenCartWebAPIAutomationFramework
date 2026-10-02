@@ -1,0 +1,4 @@
+user creds: sigoelpw@pw.com - pw123
+search key: macbook
+product name: MacBook Pro
+Quantity on cart Page: 26

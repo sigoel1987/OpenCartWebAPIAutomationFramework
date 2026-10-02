@@ -1,0 +1,74 @@
+[
+  {
+    id: 8646513,
+    name: 'apiautomationsigoel',
+    email: 'automation.sigoel_1790957609584@pw.com',
+    gender: 'female',
+    status: 'active'
+  },
+  {
+    id: 8646508,
+    name: 'Subhasini Naik VM',
+    email: 'subhasini_vm_naik@buckridge.example',
+    gender: 'female',
+    status: 'active'
+  },
+  {
+    id: 8646507,
+    name: 'Priyala Malik',
+    email: 'malik_priyala@langworth-green.example',
+    gender: 'female',
+    status: 'inactive'
+  },
+  {
+    id: 8646439,
+    name: 'apiautomationsigoel',
+    email: 'automation.sigoel_1790947869048@pw.com',
+    gender: 'female',
+    status: 'active'
+  },
+  {
+    id: 8646419,
+    name: 'Tej Devar',
+    email: 'devar_tej@connelly-daniel.example',
+    gender: 'male',
+    status: 'inactive'
+  },
+  {
+    id: 8646418,
+    name: 'Bhuvanesh Khatri',
+    email: 'khatri_bhuvanesh@funk.example',
+    gender: 'male',
+    status: 'active'
+  },
+  {
+    id: 8646417,
+    name: 'Eshita Namboothiri',
+    email: 'eshita_namboothiri@green-zboncak.test',
+    gender: 'female',
+    status: 'inactive'
+  },
+  {
+    id: 8646416,
+    name: 'Rajiv Chattopadhyay Ret.',
+    email: 'chattopadhyay_ret_rajiv@heidenreich.test',
+    gender: 'female',
+    status: 'inactive'
+  },
+  {
+    id: 8646415,
+    name: 'Vimal Dwivedi PhD',
+    email: 'dwivedi_vimal_phd@west.example',
+    gender: 'female',
+    status: 'inactive'
+  },
+  {
+    id: 8646414,
+    name: 'Baidehi Prajapat',
+    email: 'prajapat_baidehi@waelchi.example',
+    gender: 'male',
+    status: 'inactive'
+  }
+]
+200
+OK

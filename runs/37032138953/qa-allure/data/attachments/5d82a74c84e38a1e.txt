@@ -1,0 +1,12 @@
+Auth api response:  { token: '5e972e2284a3fea' }
+token ------> 5e972e2284a3fea
+created new booking:  1305
+partial update in the booking:  {
+  firstname: 'James',
+  lastname: 'Brown',
+  totalprice: 500,
+  depositpaid: true,
+  bookingdates: { checkin: '2018-01-01', checkout: '2019-01-01' },
+  additionalneeds: 'Breakfast'
+}
+update booking name is: JamesBrown

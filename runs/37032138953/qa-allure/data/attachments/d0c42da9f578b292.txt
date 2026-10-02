@@ -1,0 +1,3 @@
+user creds: sigoelpw@pw.com - pw123
+search key: samsung
+Search Result Count: 2

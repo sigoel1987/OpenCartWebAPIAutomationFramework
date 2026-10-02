@@ -1,0 +1,3 @@
+Auth api response:  { token: '2179c4f5ff288d6' }
+token ------> 2179c4f5ff288d6
+Booking ID:  430
