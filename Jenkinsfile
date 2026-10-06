@@ -144,21 +144,21 @@ pipeline {
                     sh 'allure generate qa-tests/allure-results --clean -o reports-dev/allure || true'
                     sh 'cp -r qa-tests/reporting-labs/* reports-dev/reportinglabs/ || true'
                     publishHTML(target: [
-                        reportName: 'Dev_Sanity-HtmlReport',//DEV Sanity - PW HTML Report
+                        reportName: 'DevSanityHtmlReport',//DEV Sanity - PW HTML Report
                         reportDir: 'reports-dev/html',
                         reportFiles: 'index.html',
                         keepAll: true,
                         alwaysLinkToLastBuild: true
                     ])
                     publishHTML(target: [
-                        reportName: 'Dev_Sanity-AllureReport',//DEV Sanity - Allure Report
+                        reportName: 'DevSanityAllureReport',//DEV Sanity - Allure Report
                         reportDir: 'reports-dev/allure',
                         reportFiles: 'index.html',
                         keepAll: true,
                         alwaysLinkToLastBuild: true
                     ])
                     publishHTML(target: [
-                        reportName: 'Dev_Sanity-ReportingLabsReport',//DEV Sanity - ReportingLabs Report
+                        reportName: 'DevSanityReportingLabsReport',//DEV Sanity - ReportingLabs Report
                         reportDir: 'reports-dev/reportinglabs',
                         reportFiles: 'index.html',
                         keepAll: true,
@@ -224,21 +224,21 @@ pipeline {
                     sh 'allure generate qa-tests/allure-results --clean -o reports-qa/allure || true'
                     sh 'cp -r qa-tests/reporting-labs/* reports-qa/reportinglabs/ || true'
                     publishHTML(target: [
-                        reportName: 'QA_Regression-HTMLReport',
+                        reportName: 'QARegressionHTMLReport',
                         reportDir: 'reports-qa/html',
                         reportFiles: 'index.html',
                         keepAll: true,
                         alwaysLinkToLastBuild: true
                     ])
                     publishHTML(target: [
-                        reportName: 'QA_Regression-AllureReport',
+                        reportName: 'QARegressionAllureReport',
                         reportDir: 'reports-qa/allure',
                         reportFiles: 'index.html',
                         keepAll: true,
                         alwaysLinkToLastBuild: true
                     ])
                     publishHTML(target: [
-                        reportName: 'QA_Regression-ReportingLabsReport',
+                        reportName: 'QARegressionReportingLabsReport',
                         reportDir: 'reports-qa/reportinglabs',
                         reportFiles: 'index.html',
                         keepAll: true,
@@ -304,21 +304,21 @@ pipeline {
                     sh 'allure generate qa-tests/allure-results --clean -o reports-stage/allure || true'
                     sh 'cp -r qa-tests/reporting-labs/* reports-stage/reportinglabs/ || true'
                     publishHTML(target: [
-                        reportName: 'STAGE_Sanity-HTMLReport',
+                        reportName: 'StageSanityHTMLReport',
                         reportDir: 'reports-stage/html',
                         reportFiles: 'index.html',
                         keepAll: true,
                         alwaysLinkToLastBuild: true
                     ])
                     publishHTML(target: [
-                        reportName: 'STAGE_Sanity-AllureReport',
+                        reportName: 'StageSanityAllureReport',
                         reportDir: 'reports-stage/allure',
                         reportFiles: 'index.html',
                         keepAll: true,
                         alwaysLinkToLastBuild: true
                     ])
                     publishHTML(target: [
-                        reportName: 'STAGE_Sanity-ReportingLabsReport',
+                        reportName: 'StageSanityReportingLabsReport',
                         reportDir: 'reports-stage/reportinglabs',
                         reportFiles: 'index.html',
                         keepAll: true,
@@ -392,21 +392,21 @@ pipeline {
                     sh 'allure generate qa-tests/allure-results --clean -o reports-prod/allure || true'
                     sh 'cp -r qa-tests/reporting-labs/* reports-prod/reportinglabs/ || true'
                     publishHTML(target: [
-                        reportName: 'PROD_Smoke-HTMLReport',
+                        reportName: 'ProdSmokeHTMLReport',
                         reportDir: 'reports-prod/html',
                         reportFiles: 'index.html',
                         keepAll: true,
                         alwaysLinkToLastBuild: true
                     ])
                     publishHTML(target: [
-                        reportName: 'PROD_Smoke-AllureReport',
+                        reportName: 'ProdSmokeAllureReport',
                         reportDir: 'reports-prod/allure',
                         reportFiles: 'index.html',
                         keepAll: true,
                         alwaysLinkToLastBuild: true
                     ])
                     publishHTML(target: [
-                        reportName: 'PROD_Smoke-ReportingLabsReport',
+                        reportName: 'ProdSmokeReportingLabsReport',
                         reportDir: 'reports-prod/reportinglabs',
                         reportFiles: 'index.html',
                         keepAll: true,
