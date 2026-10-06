@@ -83,7 +83,7 @@ pipeline {
                     git url: 'https://github.com/sigoel1987/OpenCartWebAPIAutomationFramework.git',
                         branch: 'main'
                     bat 'npm ci'
-                    bat 'npx playwright install --with-deps chromium'
+                    bat 'call npx playwright install --with-deps chromium'
                 }
             }
         }
@@ -125,18 +125,18 @@ pipeline {
                     ]) {
                         bat '''
                             set ENV=dev
-                            BASE_URL=$BASE_URL
-                            APP_USERNAME=$APP_USERNAME
-                            PASSWORD=$PASSWORD
-                            USER_API_BASE_URL=$USER_API_BASE_URL
-                            API_BASE_URL=$API_BASE_URL
-                            API_TOKEN=$API_TOKEN
-                            BOOKER_API_BASE_URL=$BOOKER_API_BASE_URL
-                            BOOKING_API_TOKEN=$BOOKING_API_TOKEN
-                            OAUTH_CLIENT_ID=$OAUTH_CLIENT_ID
-                            OAUTH_CLIENT_SECRET=$OAUTH_CLIENT_SECRET
+                            set BASE_URL=%BASE_URL%
+                            set APP_USERNAME=%APP_USERNAME%
+                            set PASSWORD=%PASSWORD%
+                            set USER_API_BASE_URL=%USER_API_BASE_URL%
+                            set API_BASE_URL=%API_BASE_URL%
+                            set API_TOKEN=%API_TOKEN%
+                            set BOOKER_API_BASE_URL=%BOOKER_API_BASE_URL%
+                            set BOOKING_API_TOKEN=%BOOKING_API_TOKEN%
+                            set OAUTH_CLIENT_ID=%OAUTH_CLIENT_ID%
+                            set OAUTH_CLIENT_SECRET=%OAUTH_CLIENT_SECRET%
                             set GRANT_TYPE=client_credentials
-                            npx playwright test --project=chromium --grep @smoke
+                            call npx playwright test --project=chromium --grep @smoke
                         '''
                     }
                 }
@@ -153,21 +153,21 @@ pipeline {
                     bat 'xcopy qa-tests\\reporting-labs reports-dev\\reportinglabs /E /I /Y /Q || exit /b 0'
                     publishHTML(target: [
                         reportName: 'DEV Sanity - PW HTML Report',
-                        reportDir: 'reports-dev/html',
+                        reportDir: 'reports-dev\\html',
                         reportFiles: 'index.html',
                         keepAll: true,
                         alwaysLinkToLastBuild: true
                     ])
                     publishHTML(target: [
                         reportName: 'DEV Sanity - Allure Report',
-                        reportDir: 'reports-dev/allure',
+                        reportDir: 'reports-dev\\allure',
                         reportFiles: 'index.html',
                         keepAll: true,
                         alwaysLinkToLastBuild: true
                     ])
                     publishHTML(target: [
                         reportName: 'DEV Sanity - ReportingLabs Report',
-                        reportDir: 'reports-dev/reportinglabs',
+                        reportDir: 'reports-dev\\reportinglabs',
                         reportFiles: 'index.html',
                         keepAll: true,
                         alwaysLinkToLastBuild: true
@@ -213,18 +213,18 @@ pipeline {
                     ]) {
                         bat '''
                             set ENV=qa
-                            BASE_URL=$BASE_URL
-                            APP_USERNAME=$APP_USERNAME
-                            PASSWORD=$PASSWORD
-                            USER_API_BASE_URL=$USER_API_BASE_URL
-                            API_BASE_URL=$API_BASE_URL
-                            API_TOKEN=$API_TOKEN
-                            BOOKER_API_BASE_URL=$BOOKER_API_BASE_URL
-                            BOOKING_API_TOKEN=$BOOKING_API_TOKEN
-                            OAUTH_CLIENT_ID=$OAUTH_CLIENT_ID
-                            OAUTH_CLIENT_SECRET=$OAUTH_CLIENT_SECRET
+                            set BASE_URL=%BASE_URL%
+                            set APP_USERNAME=%APP_USERNAME%
+                            set PASSWORD=%PASSWORD%
+                            set USER_API_BASE_URL=%USER_API_BASE_URL%
+                            set API_BASE_URL=%API_BASE_URL%
+                            set API_TOKEN=%API_TOKEN%
+                            set BOOKER_API_BASE_URL=%BOOKER_API_BASE_URL%
+                            set BOOKING_API_TOKEN=%BOOKING_API_TOKEN%
+                            set OAUTH_CLIENT_ID=%OAUTH_CLIENT_ID%
+                            set OAUTH_CLIENT_SECRET=%OAUTH_CLIENT_SECRET%
                             set GRANT_TYPE=client_credentials
-                            npx playwright test --project=chromium --grep @regression
+                            call npx playwright test --project=chromium --grep @regression
                         '''
                     }
                 }
@@ -241,21 +241,21 @@ pipeline {
                     bat 'xcopy qa-tests\\reporting-labs reports-qa\\reportinglabs /E /I /Y /Q || exit /b 0'
                     publishHTML(target: [
                         reportName: 'QA Regression - PW HTML Report',
-                        reportDir: 'reports-qa/html',
+                        reportDir: 'reports-qa\\html',
                         reportFiles: 'index.html',
                         keepAll: true,
                         alwaysLinkToLastBuild: true
                     ])
                     publishHTML(target: [
                         reportName: 'QA Regression - Allure Report',
-                        reportDir: 'reports-qa/allure',
+                        reportDir: 'reports-qa\\allure',
                         reportFiles: 'index.html',
                         keepAll: true,
                         alwaysLinkToLastBuild: true
                     ])
                     publishHTML(target: [
                         reportName: 'QA Regression - ReportingLabs Report',
-                        reportDir: 'reports-qa/reportinglabs',
+                        reportDir: 'reports-qa\\reportinglabs',
                         reportFiles: 'index.html',
                         keepAll: true,
                         alwaysLinkToLastBuild: true
@@ -301,18 +301,18 @@ pipeline {
                     ]) {
                         bat '''
                             set ENV=stage
-                            BASE_URL=$BASE_URL
-                            APP_USERNAME=$APP_USERNAME
-                            PASSWORD=$PASSWORD
-                            USER_API_BASE_URL=$USER_API_BASE_URL
-                            API_BASE_URL=$API_BASE_URL
-                            API_TOKEN=$API_TOKEN
-                            BOOKER_API_BASE_URL=$BOOKER_API_BASE_URL
-                            BOOKING_API_TOKEN=$BOOKING_API_TOKEN
-                            OAUTH_CLIENT_ID=$OAUTH_CLIENT_ID
-                            OAUTH_CLIENT_SECRET=$OAUTH_CLIENT_SECRET
+                            set BASE_URL=%BASE_URL%
+                            set APP_USERNAME=%APP_USERNAME%
+                            set PASSWORD=%PASSWORD%
+                            set USER_API_BASE_URL=%USER_API_BASE_URL%
+                            set API_BASE_URL=%API_BASE_URL%
+                            set API_TOKEN=%API_TOKEN%
+                            set BOOKER_API_BASE_URL=%BOOKER_API_BASE_URL%
+                            set BOOKING_API_TOKEN=%BOOKING_API_TOKEN%
+                            set OAUTH_CLIENT_ID=%OAUTH_CLIENT_ID%
+                            set OAUTH_CLIENT_SECRET=%OAUTH_CLIENT_SECRET%
                             set GRANT_TYPE=client_credentials
-                            npx playwright test --project=chromium --grep @smoke
+                            call npx playwright test --project=chromium --grep @smoke
                         '''
                     }
                 }
@@ -329,21 +329,21 @@ pipeline {
                     bat 'xcopy qa-tests\\reporting-labs reports-stage\\reportinglabs /E /I /Y /Q || exit /b 0'
                     publishHTML(target: [
                         reportName: 'STAGE Sanity - PW HTML Report',
-                        reportDir: 'reports-stage/html',
+                        reportDir: 'reports-stage\\html',
                         reportFiles: 'index.html',
                         keepAll: true,
                         alwaysLinkToLastBuild: true
                     ])
                     publishHTML(target: [
                         reportName: 'STAGE Sanity - Allure Report',
-                        reportDir: 'reports-stage/allure',
+                        reportDir: 'reports-stage\\allure',
                         reportFiles: 'index.html',
                         keepAll: true,
                         alwaysLinkToLastBuild: true
                     ])
                     publishHTML(target: [
                         reportName: 'STAGE Sanity - ReportingLabs Report',
-                        reportDir: 'reports-stage/reportinglabs',
+                        reportDir: 'reports-stage\\reportinglabs',
                         reportFiles: 'index.html',
                         keepAll: true,
                         alwaysLinkToLastBuild: true
@@ -397,18 +397,18 @@ pipeline {
                     ]) {
                         bat '''
                             set ENV=prod
-                            BASE_URL=$BASE_URL
-                            APP_USERNAME=$APP_USERNAME
-                            PASSWORD=$PASSWORD
-                            USER_API_BASE_URL=$USER_API_BASE_URL
-                            API_BASE_URL=$API_BASE_URL
-                            API_TOKEN=$API_TOKEN
-                            BOOKER_API_BASE_URL=$BOOKER_API_BASE_URL
-                            BOOKING_API_TOKEN=$BOOKING_API_TOKEN
-                            OAUTH_CLIENT_ID=$OAUTH_CLIENT_ID
-                            OAUTH_CLIENT_SECRET=$OAUTH_CLIENT_SECRET
+                            set BASE_URL=%BASE_URL%
+                            set APP_USERNAME=%APP_USERNAME%
+                            set PASSWORD=%PASSWORD%
+                            set USER_API_BASE_URL=%USER_API_BASE_URL%
+                            set API_BASE_URL=%API_BASE_URL%
+                            set API_TOKEN=%API_TOKEN%
+                            set BOOKER_API_BASE_URL=%BOOKER_API_BASE_URL%
+                            set BOOKING_API_TOKEN=%BOOKING_API_TOKEN%
+                            set OAUTH_CLIENT_ID=%OAUTH_CLIENT_ID%
+                            set OAUTH_CLIENT_SECRET=%OAUTH_CLIENT_SECRET%
                             set GRANT_TYPE=client_credentials
-                            npx playwright test --project=chromium --grep @smoke
+                            call npx playwright test --project=chromium --grep @smoke
                         '''
                     }
                 }
@@ -425,21 +425,21 @@ pipeline {
                     bat 'xcopy qa-tests\\reporting-labs reports-prod\\reportinglabs /E /I /Y /Q || exit /b 0'
                     publishHTML(target: [
                         reportName: 'PROD Smoke - PW HTML Report',
-                        reportDir: 'reports-prod/html',
+                        reportDir: 'reports-prod\\html',
                         reportFiles: 'index.html',
                         keepAll: true,
                         alwaysLinkToLastBuild: true
                     ])
                     publishHTML(target: [
                         reportName: 'PROD Smoke - Allure Report',
-                        reportDir: 'reports-prod/allure',
+                        reportDir: 'reports-prod\\allure',
                         reportFiles: 'index.html',
                         keepAll: true,
                         alwaysLinkToLastBuild: true
                     ])
                     publishHTML(target: [
                         reportName: 'PROD Smoke - ReportingLabs Report',
-                        reportDir: 'reports-prod/reportinglabs',
+                        reportDir: 'reports-prod\\reportinglabs',
                         reportFiles: 'index.html',
                         keepAll: true,
                         alwaysLinkToLastBuild: true
