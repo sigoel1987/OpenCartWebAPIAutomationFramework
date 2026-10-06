@@ -447,7 +447,7 @@ pipeline {
 
                 // Email Notification
                 emailext(
-                    to: 'naveenanimation20@gmail.com,training@naveenautomationlabs.com,shraddha.goel10@gmail.com',
+                    to: 'shraddha.goel10@gmail.com',//naveenanimation20@gmail.com,training@naveenautomationlabs.com,
                     subject: "🎭 CI/CD Pipeline — ${statusEmoji} ${buildStatus} — Build #${env.BUILD_NUMBER}",
                     mimeType: 'text/html',
                     body: """
