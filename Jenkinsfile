@@ -159,7 +159,7 @@ pipeline {
                         alwaysLinkToLastBuild: true
                     ])
                     publishHTML(target: [
-                        reportName: 'DEV Sanity - Allure Report',
+                        reportName: 'DEV-Sanity-Allure-Report',
                         reportDir: 'reports-dev\\allure',
                         reportFiles: 'index.html',
                         keepAll: true,
@@ -247,7 +247,7 @@ pipeline {
                         alwaysLinkToLastBuild: true
                     ])
                     publishHTML(target: [
-                        reportName: 'QA Regression - Allure Report',
+                        reportName: 'QA-Regression-Allure-Report',
                         reportDir: 'reports-qa\\allure',
                         reportFiles: 'index.html',
                         keepAll: true,
@@ -335,7 +335,7 @@ pipeline {
                         alwaysLinkToLastBuild: true
                     ])
                     publishHTML(target: [
-                        reportName: 'STAGE Sanity - Allure Report',
+                        reportName: 'STAGE-Sanity-Allure-Report',
                         reportDir: 'reports-stage\\allure',
                         reportFiles: 'index.html',
                         keepAll: true,
@@ -431,7 +431,7 @@ pipeline {
                         alwaysLinkToLastBuild: true
                     ])
                     publishHTML(target: [
-                        reportName: 'PROD Smoke - Allure Report',
+                        reportName: 'PROD-Smoke-Allure-Report',
                         reportDir: 'reports-prod\\allure',
                         reportFiles: 'index.html',
                         keepAll: true,
