@@ -145,28 +145,28 @@ pipeline {
                 always {
                     bat '''
                         if not exist reports-dev\\html mkdir reports-dev\\html
-                        if not exist reports-dev\\allure mkdir reports-dev\\allure
                         if not exist reports-dev\\reportinglabs mkdir reports-dev\\reportinglabs
                     '''
                     bat 'xcopy qa-tests\\reports\\html-report reports-dev\\html /E /I /Y /Q || exit /b 0'
-                    bat 'call allure generate qa-tests\\allure-results --clean -o reports-dev\\allure || exit /b 0'
+                    // bat 'call allure generate qa-tests\\allure-results --clean -o reports-dev\\allure || exit /b 0'
                     bat 'xcopy qa-tests\\reporting-labs reports-dev\\reportinglabs /E /I /Y /Q || exit /b 0'
                     publishHTML(target: [
-                        reportName: 'DEV Sanity - PW HTML Report',
+                        reportName: 'DEV-Sanity-PW-HTML-Report',
                         reportDir: 'reports-dev\\html',
                         reportFiles: 'index.html',
                         keepAll: true,
                         alwaysLinkToLastBuild: true
                     ])
+                    // publishHTML(target: [
+                    //     reportName: 'DEV-Sanity-Allure-Report',
+                    //     reportDir: 'reports-dev\\allure',
+                    //     reportFiles: 'index.html',
+                    //     keepAll: true,
+                    //     alwaysLinkToLastBuild: true
+                    // ])
+                    allure includeProperties: false, jdk: '', results: [[path: 'qa-tests/allure-results']]
                     publishHTML(target: [
-                        reportName: 'DEV-Sanity-Allure-Report',
-                        reportDir: 'reports-dev\\allure',
-                        reportFiles: 'index.html',
-                        keepAll: true,
-                        alwaysLinkToLastBuild: true
-                    ])
-                    publishHTML(target: [
-                        reportName: 'DEV Sanity - ReportingLabs Report',
+                        reportName: 'DEV-Sanity-ReportingLabs-Report',
                         reportDir: 'reports-dev\\reportinglabs',
                         reportFiles: 'index.html',
                         keepAll: true,
@@ -233,33 +233,32 @@ pipeline {
                 always {
                     bat '''
                         if not exist reports-qa\\html mkdir reports-qa\\html
-                        if not exist reports-qa\\allure mkdir reports-qa\\allure
                         if not exist reports-qa\\reportinglabs mkdir reports-qa\\reportinglabs
                     '''
                     bat 'xcopy qa-tests\\reports\\html-report reports-qa\\html /E /I /Y /Q || exit /b 0'
-                    bat 'call allure generate qa-tests\\allure-results --clean -o reports-qa\\allure || exit /b 0'
                     bat 'xcopy qa-tests\\reporting-labs reports-qa\\reportinglabs /E /I /Y /Q || exit /b 0'
                     publishHTML(target: [
-                        reportName: 'QA Regression - PW HTML Report',
+                        reportName: 'QA-Regression-PW-HTML-Report',
                         reportDir: 'reports-qa\\html',
                         reportFiles: 'index.html',
                         keepAll: true,
                         alwaysLinkToLastBuild: true
                     ])
+                    // publishHTML(target: [
+                    //     reportName: 'QA-Regression-Allure-Report',
+                    //     reportDir: 'reports-qa\\allure',
+                    //     reportFiles: 'index.html',
+                    //     keepAll: true,
+                    //     alwaysLinkToLastBuild: true
+                    // ])
                     publishHTML(target: [
-                        reportName: 'QA-Regression-Allure-Report',
-                        reportDir: 'reports-qa\\allure',
-                        reportFiles: 'index.html',
-                        keepAll: true,
-                        alwaysLinkToLastBuild: true
-                    ])
-                    publishHTML(target: [
-                        reportName: 'QA Regression - ReportingLabs Report',
+                        reportName: 'QA-Regression-ReportingLabs-Report',
                         reportDir: 'reports-qa\\reportinglabs',
                         reportFiles: 'index.html',
                         keepAll: true,
                         alwaysLinkToLastBuild: true
                     ])
+                    allure includeProperties: false, jdk: '', results: [[path: 'qa-tests/allure-results']]
                 }
             }
         }
@@ -321,28 +320,28 @@ pipeline {
                 always {
                     bat '''
                         if not exist reports-stage\\html mkdir reports-stage\\html
-                        if not exist reports-stage\\allure mkdir reports-stage\\allure
                         if not exist reports-stage\\reportinglabs mkdir reports-stage\\reportinglabs
                     '''
                     bat 'xcopy qa-tests\\reports\\html-report reports-stage\\html /E /I /Y /Q || exit /b 0'
-                    bat 'call allure generate qa-tests\\allure-results --clean -o reports-stage\\allure || exit /b 0'
+                    // bat 'call allure generate qa-tests\\allure-results --clean -o reports-stage\\allure || exit /b 0'
                     bat 'xcopy qa-tests\\reporting-labs reports-stage\\reportinglabs /E /I /Y /Q || exit /b 0'
                     publishHTML(target: [
-                        reportName: 'STAGE Sanity - PW HTML Report',
+                        reportName: 'STAGE-Sanity-PW-HTML-Report',
                         reportDir: 'reports-stage\\html',
                         reportFiles: 'index.html',
                         keepAll: true,
                         alwaysLinkToLastBuild: true
                     ])
+                    // publishHTML(target: [
+                    //     reportName: 'STAGE-Sanity-Allure-Report',
+                    //     reportDir: 'reports-stage\\allure',
+                    //     reportFiles: 'index.html',
+                    //     keepAll: true,
+                    //     alwaysLinkToLastBuild: true
+                    // ])
+                    allure includeProperties: false, jdk: '', results: [[path: 'qa-tests/allure-results']]
                     publishHTML(target: [
-                        reportName: 'STAGE-Sanity-Allure-Report',
-                        reportDir: 'reports-stage\\allure',
-                        reportFiles: 'index.html',
-                        keepAll: true,
-                        alwaysLinkToLastBuild: true
-                    ])
-                    publishHTML(target: [
-                        reportName: 'STAGE Sanity - ReportingLabs Report',
+                        reportName: 'STAGE-Sanity-ReportingLabs-Report',
                         reportDir: 'reports-stage\\reportinglabs',
                         reportFiles: 'index.html',
                         keepAll: true,
@@ -417,28 +416,28 @@ pipeline {
                 always {
                     bat '''
                         if not exist reports-prod\\html mkdir reports-prod\\html
-                        if not exist reports-prod\\allure mkdir reports-prod\\allure
                         if not exist reports-prod\\reportinglabs mkdir reports-prod\\reportinglabs
                     '''
                     bat 'xcopy qa-tests\\reports\\html-report reports-prod\\html /E /I /Y /Q || exit /b 0'
-                    bat 'call allure generate qa-tests\\allure-results --clean -o reports-prod\\allure || exit /b 0'
+                    // bat 'call allure generate qa-tests\\allure-results --clean -o reports-prod\\allure || exit /b 0'
                     bat 'xcopy qa-tests\\reporting-labs reports-prod\\reportinglabs /E /I /Y /Q || exit /b 0'
                     publishHTML(target: [
-                        reportName: 'PROD Smoke - PW HTML Report',
+                        reportName: 'PROD-Smoke-PW-HTML-Report',
                         reportDir: 'reports-prod\\html',
                         reportFiles: 'index.html',
                         keepAll: true,
                         alwaysLinkToLastBuild: true
                     ])
+                    // publishHTML(target: [
+                    //     reportName: 'PROD-Smoke-Allure-Report',
+                    //     reportDir: 'reports-prod\\allure',
+                    //     reportFiles: 'index.html',
+                    //     keepAll: true,
+                    //     alwaysLinkToLastBuild: true
+                    // ])
+                    allure includeProperties: false, jdk: '', results: [[path: 'qa-tests/allure-results']]
                     publishHTML(target: [
-                        reportName: 'PROD-Smoke-Allure-Report',
-                        reportDir: 'reports-prod\\allure',
-                        reportFiles: 'index.html',
-                        keepAll: true,
-                        alwaysLinkToLastBuild: true
-                    ])
-                    publishHTML(target: [
-                        reportName: 'PROD Smoke - ReportingLabs Report',
+                        reportName: 'PROD-Smoke-ReportingLabs-Report',
                         reportDir: 'reports-prod\\reportinglabs',
                         reportFiles: 'index.html',
                         keepAll: true,
