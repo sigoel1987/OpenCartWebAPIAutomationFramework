@@ -143,6 +143,8 @@ pipeline {
                     sh 'cp -r qa-tests/reports/html-report/* reports-dev/html/ || true'
                     sh 'allure generate qa-tests/allure-results --clean -o reports-dev/allure || true'
                     sh 'cp -r qa-tests/reporting-labs/* reports-dev/reportinglabs/ || true'
+                    sh 'zip -r html-report.zip reports-dev/html'
+                    sh 'unzip -o html-report.zip -d reports-dev/html-flat'
                     publishHTML(target: [
                         reportName: 'DevSanityHtmlReport',//DEV Sanity - PW HTML Report
                         reportDir: 'reports-dev/html',
